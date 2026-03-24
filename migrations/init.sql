@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS schedules (
 
 -- ──────────────────────────────────────
 -- 6. Bảng: enrollments (Đăng ký học phần)
--- ──────────────────────────────────────
+-- 
 CREATE TABLE IF NOT EXISTS enrollments (
   enrollment_id INT AUTO_INCREMENT NOT NULL,
   student_id    VARCHAR(10)        NOT NULL,
