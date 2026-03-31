@@ -3,7 +3,6 @@ const ApiError = require('../utils/ApiError');
 const { Sequelize } = require('sequelize');
 
 class AdminController {
-  // --- Course Management ---
   async getAllCourses(req, res, next) {
     try {
       const courses = await Course.findAll({
