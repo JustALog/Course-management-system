@@ -5,7 +5,7 @@ Topic: *Describe a project which you have worked on*: Course Management & Regist
 | File | What it is |
 |------|------------|
 | `report.tex` | LaTeX source of the written report |
-| `report.pdf` | Compiled report (11 pages) |
+| `report.pdf` | Compiled report (6 pages max) |
 | `presentation.pptx` | 14-slide deck with speaker notes (a talk script) on every slide |
 | `build_presentation.js` | pptxgenjs script that generates the deck |
 

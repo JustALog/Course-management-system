@@ -3,12 +3,12 @@
 %  Project: Course Management & Registration System
 %  Compile: pdflatex report.tex   (run twice for the table of contents)
 % =====================================================================
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[margin=2cm,headsep=0.6cm]{geometry}
 \usepackage{setspace}
 \usepackage{xcolor}
 \usepackage{titlesec}
@@ -41,9 +41,14 @@
 
 \titleformat{\section}{\Large\bfseries\color{primary}}{\thesection.}{0.6em}{}
 \titleformat{\subsection}{\large\bfseries\color{primary}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0em}{0.4em}
+\titlespacing*{\subsection}{0pt}{0.7em}{0.3em}
+\setlist{itemsep=0.1em,topsep=0.2em}
+\setlength{\textfloatsep}{0.8em}\setlength{\intextsep}{0.6em}
+\captionsetup{font=small,skip=4pt}
 
-\setstretch{1.2}
-\setlength{\parskip}{0.5em}
+\setstretch{1.08}
+\setlength{\parskip}{0.35em}
 \setlength{\parindent}{0pt}
 
 \pagestyle{fancy}
@@ -65,7 +70,7 @@
 \lstset{
   float=false,
   language=JavaScript,
-  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\footnotesize,
   keywordstyle=\color{codekw}\bfseries,
   commentstyle=\color{codecm}\itshape,
   stringstyle=\color{codestr},
@@ -73,39 +78,26 @@
   frame=single, rulecolor=\color{codebg},
   breaklines=true, columns=fullflexible,
   xleftmargin=4pt, xrightmargin=4pt,
-  aboveskip=1em, belowskip=1em,
+  aboveskip=0.5em, belowskip=0.5em,
   literate={→}{{$\rightarrow$}}1 {∩}{{$\cap$}}1 {≠}{{$\neq$}}1 {∅}{{$\emptyset$}}1
 }
 
 \begin{document}
 
 % =========================== TITLE PAGE ===========================
-\begin{titlepage}
-  \centering
-  \vspace*{2cm}
-  {\large\color{primary}\coursename\par}
-  \vspace{2.5cm}
-  {\color{accent}\rule{0.25\textwidth}{1.5pt}\par}
-  \vspace{0.8cm}
-  {\Huge\bfseries\color{primary} Describe a Project\\[0.2em] Which I Have Worked On\par}
-  \vspace{0.8cm}
-  {\LARGE Course Management \& Registration System\par}
-  \vspace{0.4cm}
-  {\large\itshape A full-stack web application for university course registration\par}
-  \vspace{0.8cm}
-  {\color{accent}\rule{0.25\textwidth}{1.5pt}\par}
-  \vfill
-  \begin{tabular}{rl}
-    \textbf{Student:}  & \studentname \\
-    \textbf{Student ID:} & \studentid \\
-    \textbf{Lecturer:} & \lecturer \\
-    \textbf{Date:}     & \today \\
-  \end{tabular}
-  \vspace{2cm}
-\end{titlepage}
+\thispagestyle{plain}
+\begin{center}
+  {\small\color{accent}\textbf{DESCRIBE A PROJECT WHICH I HAVE WORKED ON}\par}
+  \vspace{0.3em}
+  {\LARGE\bfseries\color{primary} Course Management \& Registration System\par}
+  \vspace{0.2em}
+  {\itshape A full-stack web application for university course registration\par}
+  \vspace{0.5em}
+  {\small \studentname\ \textbullet\ \studentid\ \textbullet\ \coursename\ \textbullet\ \lecturer\ \textbullet\ \today\par}
+  \vspace{0.2em}
+  {\color{accent}\rule{\textwidth}{0.8pt}}
+\end{center}
 
-\tableofcontents
-\newpage
 
 % =========================== 1. INTRODUCTION ===========================
 \section{Introduction}
@@ -126,14 +118,6 @@ or cancel, see their weekly timetable and look up their grades.
 Administrators can manage courses, semesters, class sections and schedules, and
 monitor registrations in real time.
 
-The report is organised as follows. Section~\ref{sec:background} explains why
-I chose this project and what I wanted to achieve. Section~\ref{sec:features}
-lists the main features. Section~\ref{sec:design} describes the technology
-stack, the architecture and the database. Section~\ref{sec:rules} focuses on
-the most interesting part, the business rules behind registration.
-Section~\ref{sec:process} describes how I built the project, and
-Sections~\ref{sec:challenges} and~\ref{sec:lessons} discuss the challenges I
-faced and what I learned.
 
 % =========================== 2. BACKGROUND ===========================
 \section{Background and Motivation}
@@ -445,7 +429,7 @@ throughout. The work went through five main stages:
 \section{Challenges and Solutions}
 \label{sec:challenges}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.35}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm} X}
@@ -488,13 +472,10 @@ This project taught me much more than any single course exercise:
 \end{itemize}
 
 \subsection{Future improvements}
-There are several things I would like to add next:
-\begin{itemize}[leftmargin=1.5em]
-  \item enforce course prerequisites automatically during registration;
-  \item a full automated test suite (unit and integration tests with Jest);
-  \item a waiting list for full sections, with email notifications;
-  \item caching and wider rate limiting (today only the login route is limited) to handle the peak load when registration opens.
-\end{itemize}
+Next, I would like to enforce course prerequisites automatically, add a full
+automated test suite with Jest, offer a waiting list with email notifications
+for full sections, and add caching and wider rate limiting (today only the
+login route is limited) to handle the peak load when registration opens.
 
 % =========================== 9. CONCLUSION ===========================
 \section{Conclusion}
