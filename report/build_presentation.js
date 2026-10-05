@@ -76,20 +76,20 @@ async function icon(Comp, color, size = 256) {
   let s = pres.addSlide({ masterName: "DARK_TITLE", sectionTitle: "Opening" });
   T(s, "DESCRIBE A PROJECT WHICH I HAVE WORKED ON", { x: 0.7, y: 1.0, w: 8.7, h: 0.4, fontSize: 13, bold: true, color: C.accent2, charSpacing: 2 });
   s.addText("Course Management & Registration System", { placeholder: "title" });
-  s.addText("A full-stack web app that helps students register for classes, and helps the academic office run them", { placeholder: "body" });
-  T(s, "Your Name  ·  Student ID  ·  Course Name", { x: 0.7, y: 4.65, w: 8.7, h: 0.4, fontSize: 14, color: C.background1 });
+  s.addText("A web application that makes course registration fair, reliable and simple", { placeholder: "body" });
+  T(s, "Your Name  ·  Student ID  ·  English Writing & Presentation Skills", { x: 0.7, y: 4.65, w: 8.7, h: 0.4, fontSize: 14, color: C.background1 });
   await iconCircle(s, fa.FaGraduationCap, 8.35, 0.55, 1.0, HEX.teal, HEX.orange);
-  s.addNotes("Good morning everyone. Today I'd like to describe a project I have worked on: a Course Management and Registration System. It is a full-stack web application that lets students register for their classes online, and lets the academic office manage courses, semesters and class sections.");
+  s.addNotes("Good morning, everyone. My name is [your name]. Today, I would like to tell you about a project that I have worked on: a course registration system for university students. I will explain why I built it, what it does, the biggest challenges I faced, and what I learned along the way.");
 
   // ================= 2. Agenda =================
   pres.addSection({ title: "Context" });
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Context" });
   s.addText("What I will talk about", { placeholder: "title" });
   const agenda = [
-    ["01", "The problem", "Why course registration is harder than it looks"],
-    ["02", "The solution", "Features, technology and architecture"],
-    ["03", "The hard part", "Business rules, race conditions and timetable clashes"],
-    ["04", "The journey", "How I built it, challenges and lessons learned"],
+    ["01", "Why", "The problem that inspired this project"],
+    ["02", "What", "What the system does and how it works"],
+    ["03", "Challenges", "The two hardest problems I solved"],
+    ["04", "Lessons", "How I built it and what I learned"],
   ];
   agenda.forEach(([num, head, sub], i) => {
     const x = 0.5 + i * 2.3, y = 1.5;
@@ -98,7 +98,7 @@ async function icon(Comp, color, size = 256) {
     T(s, head, { x: x + 0.25, y: y + 1.2, w: 1.7, h: 0.5, fontSize: 18, bold: true, color: C.text2 });
     T(s, sub, { x: x + 0.25, y: y + 1.8, w: 1.7, h: 1.1, fontSize: 14, color: C.text1 });
   });
-  s.addNotes("My presentation has four parts. First, the problem. Second, the solution: the features, the technologies and the architecture. Third, the most interesting technical part, the business rules. And finally, how I built it and what I learned.");
+  s.addNotes("My presentation is divided into four parts. First, I will talk about why I chose this project. Second, I will show you what the system does and how it works. Third, I will focus on the two hardest problems I had to solve. And finally, I will share what I learned. The presentation will take about seven minutes, and I will be happy to answer your questions at the end.");
 
   // ================= 3. Problem =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Context" });
@@ -118,12 +118,12 @@ async function icon(Comp, color, size = 256) {
     T(s, head, { x: x + 1.35, y: y + 0.3, w: 2.85, h: 0.4, fontSize: 18, bold: true, color: C.text2 });
     T(s, sub, { x: x + 1.35, y: y + 0.75, w: 2.85, h: 0.75, fontSize: 14, color: C.text1 });
   }
-  s.addNotes("Why did I choose this project? Every semester, students rush to register when the window opens. Seats are limited, so many students try to take the last seat at the same time. It is easy to choose two classes that clash. The time window is short. And on the other side, staff often manage everything with spreadsheets. I wanted to build a system that solves these problems properly.");
+  s.addNotes("Let me start with the problem. I am sure many of you remember registration day. Everyone clicks at the same time, so seats disappear in minutes. It is easy to choose two classes that are at the same time. The registration period is very short. And on the other side, the academic office often manages everything in spreadsheets. I experienced this stress myself, and that is exactly why I chose this project.");
 
   // ================= 4. Goals + numbers =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Context" });
   s.addText("The project at a glance", { placeholder: "title" });
-  const stats = [["2", "portals", "student & admin"], ["8", "database tables", "MySQL 8"], ["9", "business rules", "BR01 – BR09"], ["3", "containers", "Docker, one command"]];
+  const stats = [["2", "portals", "students & admins"], ["9", "rules", "checked on every sign-up"], ["3", "months", "January – March 2026"], ["1", "developer", "designed and built by me"]];
   stats.forEach(([big, label, sub], i) => {
     const x = 0.5 + i * 2.3;
     T(s, big, { x, y: 1.35, w: 2.1, h: 1.0, fontSize: 60, bold: true, color: C.accent2, fontFace: THEME.headFontFace });
@@ -133,9 +133,9 @@ async function icon(Comp, color, size = 256) {
   card(s, 0.5, 3.55, 9.0, 1.3, C.accent5);
   T(s, [
     { text: "My goal: ", options: { bold: true, color: C.text2 } },
-    { text: "a working system where registration rules are enforced on the server, so the data stays correct even when many students click “Register” at the same moment.", options: { color: C.text1 } },
+    { text: "a system that is fair, reliable and easy to use, even when hundreds of students click “Register” at the same moment.", options: { color: C.text1 } },
   ], { x: 0.8, y: 3.75, w: 8.4, h: 0.95, fontSize: 16, valign: "middle" });
-  s.addNotes("Here is the project at a glance. There are two portals, one for students and one for administrators. The database has eight tables. I defined nine business rules for registration and cancellation. And the whole system runs in three Docker containers. My main goal was correctness: the server must enforce the rules, even when many students register at the same moment.");
+  s.addNotes("Here is the project at a glance. The system has two portals: one for students and one for administrators. It checks nine rules every time a student signs up for a class. I built it in about three months, from January to March 2026, and I designed and developed it by myself. My main goal was simple: the system must be fair, reliable and easy to use, even on the busiest day.");
 
   // ================= 5. Features =================
   pres.addSection({ title: "Solution" });
@@ -154,93 +154,32 @@ async function icon(Comp, color, size = 256) {
     T(s, items.map((t, k) => ({ text: t, options: { bullet: true, breakLine: k < items.length - 1 } })),
       { x: x + 0.35, y: y + 1.3, w: 3.8, h: 2.1, fontSize: 15, color: C.text1, paraSpaceAfter: 8 });
   }
-  s.addNotes("The system has two portals. Students can see their information, register for or cancel classes with one click, view a weekly timetable, and check their grades. Administrators manage courses, semesters, class sections and schedules, and they can track registrations. Both portals share one login, and the token decides which portal opens. I also added a dark mode.");
+  s.addNotes("Now, let's move on to what the system actually does. Students can view their information, register for or cancel a class with just one click, see their weekly timetable, and check their grades. Administrators, on the other hand, can manage courses, semesters and classes, and they can monitor how many students have registered. Each user only sees the portal that matches their role.");
 
-  // ================= 6. Tech stack =================
+  // ================= 6. How it works =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
-  s.addText("Technology stack", { placeholder: "title" });
-  const stack = [
-    [fa.FaReact, "Frontend", "React 19\nVite\nReact Router\nCustom CSS + dark mode"],
-    [fa.FaNodeJs, "Backend", "Node.js + Express\nSequelize ORM\nexpress-validator"],
-    [fa.FaDatabase, "Database", "MySQL 8\nutf8mb4 for Vietnamese\nIndexes + constraints"],
-    [fa.FaDocker, "DevOps", "Docker Compose\nNginx\nnpm workspaces"],
+  s.addText("How it works: three parts", { placeholder: "title" });
+  const parts = [
+    [fa.FaDesktop, "Front end", "What users see and click in the browser", "React"],
+    [fa.FaServer, "Back end", "Checks who you are and applies the rules", "Node.js + Express"],
+    [fa.FaDatabase, "Database", "Stores students, classes, timetables and grades", "MySQL"],
   ];
-  for (let i = 0; i < stack.length; i++) {
-    const [ic, head, body] = stack[i];
-    const x = 0.5 + i * 2.3, y = 1.35;
-    card(s, x, y, 2.1, 3.5);
-    await iconCircle(s, ic, x + 0.6, y + 0.3, 0.9, HEX.teal, HEX.white);
-    T(s, head, { x: x + 0.15, y: y + 1.35, w: 1.8, h: 0.4, fontSize: 18, bold: true, color: C.text2, align: "center" });
-    T(s, body, { x: x + 0.2, y: y + 1.85, w: 1.7, h: 1.5, fontSize: 14, color: C.text1, align: "center", paraSpaceAfter: 4 });
+  for (let i = 0; i < parts.length; i++) {
+    const [ic, h, d, tech] = parts[i];
+    const x = 0.5 + i * 3.15, y = 1.35;
+    card(s, x, y, 2.75, 2.75, i === 1 ? C.accent5 : C.background2);
+    await iconCircle(s, ic, x + 0.95, y + 0.25, 0.85, i === 1 ? HEX.orange : HEX.teal, HEX.white);
+    T(s, h, { x: x + 0.15, y: y + 1.25, w: 2.45, h: 0.4, fontSize: 19, bold: true, color: C.text2, align: "center" });
+    T(s, d, { x: x + 0.2, y: y + 1.7, w: 2.35, h: 0.65, fontSize: 14, color: C.text1, align: "center" });
+    T(s, tech, { x: x + 0.15, y: y + 2.35, w: 2.45, h: 0.3, fontSize: 13, italic: true, color: C.accent4, align: "center" });
+    if (i < 2) s.addShape(pres.shapes.LINE, { x: x + 2.8, y: y + 1.37, w: 0.3, h: 0, line: { color: HEX.muted, width: 2, beginArrowType: "triangle", endArrowType: "triangle" }, objectName: name("arrow") });
   }
-  s.addNotes("For the technology: the frontend uses React with Vite and React Router. The backend is Node.js with Express, and I used the Sequelize ORM to talk to a MySQL 8 database. For security I used JWT tokens and bcrypt password hashing. And everything is packaged with Docker Compose, with Nginx serving the frontend.");
+  card(s, 0.5, 4.3, 9.0, 0.6, C.accent5);
+  await iconCircle(s, fa.FaDocker, 0.65, 4.37, 0.46, HEX.teal, HEX.white);
+  T(s, "Packaged with Docker: the whole system starts with one command", { x: 1.3, y: 4.3, w: 8.0, h: 0.6, fontSize: 15, color: C.text2, valign: "middle" });
+  s.addNotes("So, how does it work? Like most web applications, it has three parts. The front end is what users see in their browser; I built it with React. The back end is the 'brain': it checks who the user is and applies all the rules. And the database stores all the information. Finally, I packaged everything with a tool called Docker, so the whole system can be started with a single command.");
 
-  // ================= 7. Architecture =================
-  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
-  s.addText("Layered architecture", { placeholder: "title" });
-  // client
-  const box = (x, y, w, h, fill, txt, color, size = 15) => {
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w, h, rectRadius: 0.08, fill: { color: fill }, line: { type: "none" }, shadow: shadow(), objectName: name("box") });
-    T(s, txt, { x, y, w, h, fontSize: size, bold: true, color, align: "center", valign: "middle" });
-  };
-  box(0.5, 2.45, 1.9, 1.0, HEX.teal, "React Client", C.background1, 16);
-  box(7.6, 2.45, 1.9, 1.0, HEX.teal, "MySQL 8", C.background1, 16);
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 3.2, y: 1.25, w: 3.6, h: 3.75, rectRadius: 0.1, fill: { color: HEX.light }, line: { color: HEX.line, width: 1, dashType: "dash" }, objectName: name("api-frame") });
-  T(s, "Express API", { x: 3.2, y: 1.32, w: 3.6, h: 0.35, fontSize: 14, bold: true, color: C.text2, align: "center" });
-  const layers = [["Routes", "map URLs to controllers"], ["Middleware", "JWT · roles · validation"], ["Controllers", "read request, send response"], ["Services", "business rules BR01–BR09"], ["Models", "Sequelize ↔ MySQL tables"]];
-  layers.forEach(([h, d], i) => {
-    const y = 1.75 + i * 0.63;
-    const isSvc = h === "Services";
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 3.4, y, w: 3.2, h: 0.53, rectRadius: 0.06, fill: { color: isSvc ? HEX.orange : HEX.white }, line: { color: isSvc ? HEX.orange : HEX.line, width: 1 }, objectName: name("layer") });
-    T(s, [{ text: h + "  ", options: { bold: true } }, { text: d, options: { fontSize: 12 } }],
-      { x: 3.55, y, w: 3.0, h: 0.53, fontSize: 14, color: isSvc ? C.background1 : C.text2, valign: "middle" });
-  });
-  s.addShape(pres.shapes.LINE, { x: 2.45, y: 2.95, w: 0.7, h: 0, line: { color: HEX.muted, width: 2, endArrowType: "triangle" }, objectName: name("arrow") });
-  s.addShape(pres.shapes.LINE, { x: 6.85, y: 2.95, w: 0.7, h: 0, line: { color: HEX.muted, width: 2, endArrowType: "triangle" }, objectName: name("arrow") });
-  T(s, "JSON + JWT", { x: 0.5, y: 3.6, w: 1.9, h: 0.3, fontSize: 12, color: C.accent4, align: "center" });
-  T(s, "SQL", { x: 7.6, y: 3.6, w: 1.9, h: 0.3, fontSize: 12, color: C.accent4, align: "center" });
-  s.addNotes("This is the architecture. The React client sends JSON requests with a JWT token to the Express API. Inside the API there are five layers, and each layer has one job. Routes map URLs to controllers. Middleware checks the token, the user's role and the input. Controllers handle the request and response. Services, highlighted in orange, contain the business rules. And models map objects to MySQL tables. This separation made the code much easier to change.");
-
-  // ================= 8. Database =================
-  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
-  s.addText("Database design: 8 tables", { placeholder: "title" });
-  const ent = (x, y, label, hi) => {
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 1.45, h: 0.55, rectRadius: 0.06, fill: { color: hi ? HEX.orange : HEX.teal }, line: { type: "none" }, objectName: name("entity") });
-    T(s, label, { x, y, w: 1.45, h: 0.55, fontSize: 13, bold: true, color: C.background1, align: "center", valign: "middle" });
-  };
-  const ln = (x, y, w, h, flipV) => s.addShape(pres.shapes.LINE, { x, y, w, h, flipV: !!flipV, line: { color: HEX.muted, width: 1.5 }, objectName: name("rel") });
-  ent(0.5, 1.4, "courses"); ent(0.5, 3.4, "semesters"); ent(2.6, 2.4, "sections", true);
-  ent(4.6, 1.4, "schedules"); ent(4.6, 3.4, "enrollments", true); ent(4.6, 4.3, "students");
-  ln(1.95, 1.68, 0.65, 0.95); ln(1.95, 2.95, 0.65, 0.73, true);
-  ln(4.05, 1.68, 0.55, 0.95, true); ln(4.05, 2.68, 0.55, 1.0);
-  ln(5.32, 3.95, 0, 0.35);
-  T(s, "+ admins, results", { x: 0.5, y: 4.4, w: 3.6, h: 0.35, fontSize: 12, color: C.accent4, italic: true });
-  card(s, 6.5, 1.3, 3.0, 3.6);
-  T(s, "Safety nets in the database", { x: 6.7, y: 1.45, w: 2.65, h: 0.4, fontSize: 16, bold: true, color: C.text2 });
-  const nets = ["UNIQUE (student, section) stops duplicate sign-ups", "CHECK current ≤ max students", "Scores must be 0 – 10", "Indexes on foreign keys and status"];
-  T(s, nets.map((t, k) => ({ text: t, options: { bullet: true, breakLine: k < nets.length - 1 } })),
-    { x: 6.7, y: 2.0, w: 2.65, h: 2.75, fontSize: 14, color: C.text1, paraSpaceAfter: 8 });
-  s.addNotes("The database has eight tables. A course can be opened as several sections in a semester. Each section has schedules, meaning the day and periods it meets. Students register for sections through the enrollments table. I didn't rely only on code: the database also has safety nets. A unique index prevents duplicate registrations, and a check constraint ensures a class never has more students than seats.");
-
-  // ================= 9. Business rules =================
   pres.addSection({ title: "Hard part" });
-  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Hard part" });
-  s.addText("Nine rules behind every registration", { placeholder: "title" });
-  const rules = [
-    ["BR01", "No duplicate registration"], ["BR02", "Section must have seats"], ["BR03", "Only inside the registration window"],
-    ["BR04", "No timetable clashes"], ["BR05", "Suspended students are blocked"], ["BR06", "Section must be open"],
-    ["BR07", "Cancel only inside the window"], ["BR08", "Seat counter updates automatically"], ["BR09", "Cancellations are kept (soft delete)"],
-  ];
-  rules.forEach(([code, txt], i) => {
-    const col = i % 3, row = Math.floor(i / 3);
-    const x = 0.5 + col * 3.05, y = 1.3 + row * 1.2;
-    const hi = code === "BR02" || code === "BR04";
-    card(s, x, y, 2.9, 1.0, hi ? C.accent5 : C.background2);
-    T(s, code, { x: x + 0.2, y: y + 0.12, w: 2.5, h: 0.35, fontSize: 14, bold: true, color: hi ? C.accent2 : C.text2 });
-    T(s, txt, { x: x + 0.2, y: y + 0.47, w: 2.6, h: 0.45, fontSize: 14, color: C.text1 });
-  });
-  s.addNotes("Before writing code, I wrote down nine business rules. Rules one to six apply when a student registers: no duplicates, the class must have seats, it must be inside the registration window, there must be no timetable clash, the student must not be suspended, and the class must be open. Rules seven to nine apply to cancellation. The two highlighted rules, two and four, were the hardest, so let me explain them.");
-
   // ================= 10. Race condition =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Hard part" });
   s.addText("Challenge 1: the last seat", { placeholder: "title" });
@@ -258,16 +197,16 @@ async function icon(Comp, color, size = 256) {
   card(s, 5.1, 1.3, 4.4, 3.6, C.accent5);
   T(s, "My solution", { x: 5.35, y: 1.45, w: 3.9, h: 0.4, fontSize: 18, bold: true, color: C.text2 });
   const sol = [
-    ["Transaction", "all checks and the insert succeed together, or nothing changes"],
-    ["Row lock", "SELECT … FOR UPDATE makes Student B wait for Student A"],
-    ["Atomic counter", "seat count is incremented inside the database"],
+    ["All or nothing", "every check and the sign-up succeed together, or nothing changes"],
+    ["A short lock", "the class is locked for a moment, so Student B waits for Student A"],
+    ["A safety rule", "the database itself refuses more students than seats"],
   ];
   sol.forEach(([h, d], i) => {
     const y = 2.0 + i * 0.95;
     T(s, [{ text: h, options: { bold: true, color: C.text2, breakLine: true } }, { text: d, options: { color: C.text1 } }],
       { x: 5.35, y, w: 3.95, h: 0.85, fontSize: 14 });
   });
-  s.addNotes("The first challenge is the last seat. Imagine a class with forty seats and thirty-nine students. Student A and Student B click Register at the same moment. Both read 'one seat left', both get registered, and now the class has forty-one students. To fix this, I run the whole registration inside a database transaction, and I lock the section's row. Student B has to wait until Student A finishes, and then B correctly sees that the class is full.");
+  s.addNotes("This brings me to the most interesting part: the challenges. The first one is what I call 'the last seat'. Imagine a class with forty seats and thirty-nine students. Two students click Register at exactly the same moment. Without protection, both see one free seat, both are accepted, and the class ends up with forty-one students. To solve this, I made the sign-up 'all or nothing', and I lock the class for a very short moment, so the second student has to wait. When it is their turn, the system correctly says the class is full. As a final safety net, the database itself refuses more students than seats.");
 
   // ================= 11. Timetable conflict =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Hard part" });
@@ -275,7 +214,7 @@ async function icon(Comp, color, size = 256) {
   T(s, "Two classes clash only if all three conditions are true", { x: 0.5, y: 1.2, w: 9, h: 0.4, fontSize: 16, color: C.accent4 });
   const conds = [
     [fa.FaCalendarDay, "Same day", "Both meet on, for example, Monday"],
-    [fa.FaStream, "Periods overlap", "start A ≤ end B  and  end A ≥ start B"],
+    [fa.FaStream, "Periods overlap", "Their lesson times overlap, even by one period"],
     [fa.FaExchangeAlt, "Weeks match", "An odd-week class never clashes with an even-week class"],
   ];
   for (let i = 0; i < 3; i++) {
@@ -287,9 +226,9 @@ async function icon(Comp, color, size = 256) {
     T(s, d, { x: x + 0.25, y: 3.3, w: 2.5, h: 0.65, fontSize: 13, color: C.text1 });
   }
   card(s, 0.5, 4.2, 9.0, 0.7, C.accent5);
-  T(s, [{ text: "Result: ", options: { bold: true, color: C.text2 } }, { text: "HTTP 409 Conflict plus the name of the clashing class, so the student knows exactly what to change.", options: { color: C.text1 } }],
+  T(s, [{ text: "Result: ", options: { bold: true, color: C.text2 } }, { text: "a clear message that names the clashing class, so the student knows exactly what to change.", options: { color: C.text1 } }],
     { x: 0.75, y: 4.2, w: 8.5, h: 0.7, fontSize: 15, valign: "middle" });
-  s.addNotes("The second challenge is timetable clashes. When a student registers, the system compares the new class with every class the student already has in that semester. Two classes clash only when three things are true: same day, overlapping periods, and compatible weeks. For example, a class held only in odd weeks never clashes with one held only in even weeks. If there is a clash, the server returns error 409 with the name of the conflicting class.");
+  s.addNotes("The second challenge was timetable clashes. It sounds easy, but some classes only meet in odd weeks, and others only in even weeks. So I defined a clear rule: two classes clash only if all three conditions on this slide are true: the same day, overlapping periods, and compatible weeks. And when there is a clash, the system does not just say 'Error'. It tells the student exactly which class is the problem.");
 
   // ================= 12. Timeline =================
   pres.addSection({ title: "Journey" });
@@ -297,31 +236,31 @@ async function icon(Comp, color, size = 256) {
   s.addText("How I built it", { placeholder: "title" });
   const tl = [
     ["Jan 2026", "Analysis", "Studied the real process, wrote the 9 rules"],
-    ["Mar 2026", "Backend", "Database schema, seed data, REST API"],
-    ["Mar 2026", "Monorepo", "Client + server workspaces, one dev command"],
-    ["Mar 2026", "Frontend", "Student and admin sites, dark mode"],
-    ["Mar 2026", "Docker", "MySQL, API, Nginx with health checks + docs"],
+    ["Mar 2026", "Back end", "Database and all the registration rules"],
+    ["Mar 2026", "Reorganise", "One clean project for all the code"],
+    ["Mar 2026", "Front end", "Student and admin websites, dark mode"],
+    ["Mar 2026", "Release", "Docker setup and documentation"],
   ];
-  s.addShape(pres.shapes.LINE, { x: 0.9, y: 2.15, w: 8.2, h: 0, line: { color: HEX.line, width: 3 }, objectName: name("timeline") });
+  s.addShape(pres.shapes.LINE, { x: 1.3, y: 2.15, w: 7.4, h: 0, line: { color: HEX.line, width: 3 }, objectName: name("timeline") });
   tl.forEach(([date, h, d], i) => {
-    const cx = 0.9 + i * 2.05;
+    const cx = 1.3 + i * 1.85;
     s.addShape(pres.shapes.OVAL, { x: cx - 0.2, y: 1.95, w: 0.4, h: 0.4, fill: { color: i === 0 ? HEX.orange : HEX.teal }, line: { color: HEX.white, width: 3 }, objectName: name("dot") });
-    T(s, date, { x: cx - 0.85, y: 1.45, w: 1.7, h: 0.35, fontSize: 12, color: C.accent4, align: "center" });
-    T(s, h, { x: cx - 0.85, y: 2.55, w: 1.7, h: 0.4, fontSize: 17, bold: true, color: C.text2, align: "center" });
-    T(s, d, { x: cx - 0.85, y: 3.0, w: 1.7, h: 1.2, fontSize: 13, color: C.text1, align: "center" });
+    T(s, date, { x: cx - 0.8, y: 1.45, w: 1.6, h: 0.35, fontSize: 12, color: C.accent4, align: "center" });
+    T(s, h, { x: cx - 0.8, y: 2.55, w: 1.6, h: 0.4, fontSize: 17, bold: true, color: C.text2, align: "center" });
+    T(s, d, { x: cx - 0.8, y: 3.0, w: 1.6, h: 1.2, fontSize: 13, color: C.text1, align: "center" });
   });
   card(s, 0.5, 4.3, 9.0, 0.6, C.accent5);
-  T(s, "Everything tracked with Git, from the first README to the Docker setup", { x: 0.75, y: 4.3, w: 8.5, h: 0.6, fontSize: 14, color: C.text2, valign: "middle" });
-  s.addNotes("I built the project in five stages. In January I analysed the real registration process and wrote the rules. In March I built the database and the backend API, then reorganised the project into a monorepo so I could start everything with one command. Next I built the student and admin websites, and finally I packaged everything with Docker and wrote the documentation. I used Git the whole time.");
+  T(s, "Every step saved with Git, so I could always go back after a mistake", { x: 0.75, y: 4.3, w: 8.5, h: 0.6, fontSize: 14, color: C.text2, valign: "middle" });
+  s.addNotes("Now, let me briefly describe how I built the project. I worked in five stages. In January, I analysed the real process and wrote down nine rules. In March, I built the database and the back end, then reorganised the code, built the two websites, and finally prepared the release with Docker and documentation. I used Git the whole time, so I could always go back if I made a mistake.");
 
   // ================= 13. Lessons =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Journey" });
   s.addText("What I learned", { placeholder: "title" });
   const lessons = [
-    [fa.FaLock, "Transactions matter", "Transactions and locks are what keep data right under load"],
-    [fa.FaPencilRuler, "Think before coding", "Writing the rules first made the code clear and easy to check"],
-    [fa.FaLayerGroup, "Clean layers pay off", "I could change one layer without breaking the others"],
-    [fa.FaTools, "Professional habits", "Git, documentation and Docker from day one"],
+    [fa.FaPencilRuler, "Plan before acting", "Writing the nine rules first saved me a lot of time"],
+    [fa.FaBookOpen, "Learn independently", "I found many answers in English documentation"],
+    [fa.FaPenNib, "Write clearly", "Documentation taught me to explain ideas simply"],
+    [fa.FaHourglassHalf, "Manage my time", "Small stages kept me motivated and on track"],
   ];
   for (let i = 0; i < lessons.length; i++) {
     const [ic, h, d] = lessons[i];
@@ -332,10 +271,10 @@ async function icon(Comp, color, size = 256) {
   }
   card(s, 6.2, 1.25, 3.3, 3.65, C.accent5);
   T(s, "Next steps", { x: 6.45, y: 1.4, w: 2.8, h: 0.4, fontSize: 18, bold: true, color: C.text2 });
-  const next = ["Check prerequisites automatically", "Automated tests with Jest", "Waiting list + email alerts", "Caching for peak load"];
+  const next = ["Automatic tests", "Waiting list with email alerts", "Automatic prerequisite check"];
   T(s, next.map((t, k) => ({ text: t, options: { bullet: true, breakLine: k < next.length - 1 } })),
     { x: 6.45, y: 1.95, w: 2.85, h: 2.8, fontSize: 15, color: C.text1, paraSpaceAfter: 10 });
-  s.addNotes("This project taught me a lot. First, correctness needs the database: transactions and locks really matter. Second, thinking before coding: writing the rules first made the code much clearer. Third, a clean layered architecture makes changes safe. And fourth, professional habits like Git, documentation and Docker. In the future, I want to check prerequisites automatically, add automated tests, add a waiting list with email alerts, and add caching for peak load.");
+  s.addNotes("Finally, what did I learn? Of course, I improved my technical skills. But more importantly, I learned four skills that are useful in any job. First, plan before acting: writing the rules first saved me a lot of time. Second, learn independently: many answers were only in English documentation. Third, write clearly: writing documentation taught me to explain ideas simply. And fourth, manage my time by working in small stages. In the future, I would like to add automatic tests, a waiting list, and a prerequisite check.");
 
   // ================= 14. Thank you =================
   pres.addSection({ title: "Closing" });
@@ -343,8 +282,8 @@ async function icon(Comp, color, size = 256) {
   s.addText("Thank you!", { placeholder: "title" });
   s.addText("Questions and feedback are very welcome", { placeholder: "body" });
   await iconCircle(s, fa.FaComments, 8.35, 0.55, 1.0, HEX.teal, HEX.orange);
-  T(s, "React · Express · MySQL · Docker", { x: 0.7, y: 4.65, w: 8.7, h: 0.4, fontSize: 14, color: C.background1 });
-  s.addNotes("To sum up, this project solves a real problem that every student knows, and it works from end to end. It is the project I am most proud of so far. Thank you for listening. I'm happy to answer any questions.");
+  T(s, "Your Name  ·  English Writing & Presentation Skills", { x: 0.7, y: 4.65, w: 8.7, h: 0.4, fontSize: 14, color: C.background1 });
+  s.addNotes("To sum up, this project started from a problem I experienced myself and became a complete, working system. It taught me that good software is not only about code, but about understanding people's problems. Thank you very much for listening. I would be happy to answer any questions you may have.");
 
   await pres.writeFile({ fileName: OUT });
   await applyTheme(OUT, THEME);

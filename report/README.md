@@ -1,18 +1,20 @@
 # Project report & presentation
 
-Topic: *Describe a project which you have worked on*: Course Management & Registration System.
+Course: **English Writing & Presentation Skills**. Topic: *Describe a project which you have worked on* (Course Management & Registration System).
 
 | File | What it is |
 |------|------------|
-| `report.tex` | LaTeX source of the written report |
-| `report.pdf` | Compiled report (6 pages max) |
-| `presentation.pptx` | 14-slide deck with speaker notes (a talk script) on every slide |
+| `report.tex` | LaTeX source of the written report (essay style, max 6 pages) |
+| `report.pdf` | Compiled report (5 pages) |
+| `presentation.pptx` | 11-slide deck, about 7 minutes, with speaker notes on every slide |
+| `presentation_script.md` | The speaker notes as one script for practising, plus signposting phrases |
 | `build_presentation.js` | pptxgenjs script that generates the deck |
 
 ## Before submitting
-Fill in your details at the top of `report.tex` (`\studentname`, `\studentid`, `\coursename`, `\lecturer`), and on slide 1 of the deck.
+- Fill in your details at the top of `report.tex` (`\studentname`, `\studentid`, `\lecturer`).
+- Replace "Your Name" / "Student ID" on slides 1 and 11, and `[your name]` in the script.
 
-## Rebuild
+## Rebuild the report
 ```bash
-pdflatex report.tex && pdflatex report.tex   # run twice for the table of contents
+pdflatex report.tex
 ```

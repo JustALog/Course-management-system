@@ -1,14 +1,15 @@
 % =====================================================================
-%  Report: Describe a project which you have worked on
+%  English Writing & Presentation Skills
+%  Topic: Describe a project which you have worked on
 %  Project: Course Management & Registration System
-%  Compile: pdflatex report.tex   (run twice for the table of contents)
+%  Compile: pdflatex report.tex      (maximum length: 6 pages)
 % =====================================================================
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[margin=2cm,headsep=0.6cm]{geometry}
+\usepackage[margin=2.2cm,headsep=0.6cm]{geometry}
 \usepackage{setspace}
 \usepackage{xcolor}
 \usepackage{titlesec}
@@ -16,475 +17,275 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{array}
-\usepackage{listings}
 \usepackage{tikz}
-\usetikzlibrary{positioning,arrows.meta,shapes.geometric,fit}
+\usetikzlibrary{positioning,arrows.meta}
 \usepackage{fancyhdr}
 \usepackage{caption}
 \usepackage{float}
-\usepackage[section]{placeins}
 \usepackage[hidelinks]{hyperref}
 
 % ---------- Fill in your details here ----------
 \newcommand{\studentname}{Your Full Name}
 \newcommand{\studentid}{Student ID}
-\newcommand{\coursename}{Course Name}
+\newcommand{\coursename}{English Writing \& Presentation Skills}
 \newcommand{\lecturer}{Lecturer's Name}
 % -----------------------------------------------
 
 \definecolor{primary}{HTML}{1F4E5F}
 \definecolor{accent}{HTML}{E07A2F}
-\definecolor{codebg}{HTML}{F4F6F8}
-\definecolor{codekw}{HTML}{1F4E5F}
-\definecolor{codecm}{HTML}{6A737D}
-\definecolor{codestr}{HTML}{B5532A}
 
 \titleformat{\section}{\Large\bfseries\color{primary}}{\thesection.}{0.6em}{}
 \titleformat{\subsection}{\large\bfseries\color{primary}}{\thesubsection}{0.6em}{}
-\titlespacing*{\section}{0pt}{1.0em}{0.4em}
+\titlespacing*{\section}{0pt}{1.1em}{0.4em}
 \titlespacing*{\subsection}{0pt}{0.7em}{0.3em}
-\setlist{itemsep=0.1em,topsep=0.2em}
-\setlength{\textfloatsep}{0.8em}\setlength{\intextsep}{0.6em}
+\setlist{itemsep=0.15em,topsep=0.3em}
 \captionsetup{font=small,skip=4pt}
 
-\setstretch{1.08}
-\setlength{\parskip}{0.35em}
+\setstretch{1.15}
+\setlength{\parskip}{0.5em}
 \setlength{\parindent}{0pt}
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{primary}Course Management \& Registration System}
+\fancyhead[L]{\small\color{primary}Describe a Project Which I Have Worked On}
 \fancyhead[R]{\small\studentname}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
-\lstdefinelanguage{JavaScript}{
-  keywords={const,let,var,if,else,return,async,await,throw,new,class,try,catch,function,for,of},
-  sensitive=true,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]',
-  morestring=[b]",
-  morestring=[b]`
-}
-\lstset{
-  float=false,
-  language=JavaScript,
-  basicstyle=\ttfamily\footnotesize,
-  keywordstyle=\color{codekw}\bfseries,
-  commentstyle=\color{codecm}\itshape,
-  stringstyle=\color{codestr},
-  backgroundcolor=\color{codebg},
-  frame=single, rulecolor=\color{codebg},
-  breaklines=true, columns=fullflexible,
-  xleftmargin=4pt, xrightmargin=4pt,
-  aboveskip=0.5em, belowskip=0.5em,
-  literate={→}{{$\rightarrow$}}1 {∩}{{$\cap$}}1 {≠}{{$\neq$}}1 {∅}{{$\emptyset$}}1
-}
-
 \begin{document}
 
-% =========================== TITLE PAGE ===========================
+% =========================== HEADER ===========================
 \thispagestyle{plain}
 \begin{center}
   {\small\color{accent}\textbf{DESCRIBE A PROJECT WHICH I HAVE WORKED ON}\par}
   \vspace{0.3em}
-  {\LARGE\bfseries\color{primary} Course Management \& Registration System\par}
+  {\LARGE\bfseries\color{primary} Building a Course Registration System\par}
   \vspace{0.2em}
-  {\itshape A full-stack web application for university course registration\par}
-  \vspace{0.5em}
-  {\small \studentname\ \textbullet\ \studentid\ \textbullet\ \coursename\ \textbullet\ \lecturer\ \textbullet\ \today\par}
+  {\itshape How I turned a stressful student experience into working software\par}
+  \vspace{0.6em}
+  {\small \studentname\ \textbullet\ \studentid\ \textbullet\ \coursename\par}
+  {\small \lecturer\ \textbullet\ \today\par}
   \vspace{0.2em}
   {\color{accent}\rule{\textwidth}{0.8pt}}
 \end{center}
 
-
 % =========================== 1. INTRODUCTION ===========================
 \section{Introduction}
 
-Every semester, thousands of university students rush to register for their
-courses at the same moment the registration window opens. Anyone who has gone
-through this knows how stressful it can be: classes fill up within minutes,
-timetables clash, and it is often unclear whether a registration actually went
-through. On the other side, the academic office has to manage courses,
-semesters, class sections and rooms, frequently with spreadsheets and manual
-checks.
+At the start of every semester, thousands of students at my university sit in
+front of their computers and wait for the course registration page to open.
+When it finally does, everyone clicks at the same time. Within minutes, popular
+classes are full, some students discover that two of their classes are at the
+same time, and many are not even sure whether their registration was saved. I
+have been through this experience several times, and it was always stressful.
 
-In this report, I describe a project that I have worked on to address this
-problem: the \textbf{Course Management \& Registration System}. It is a
-full-stack web application with two portals, one for \emph{students} and one
-for \emph{administrators}. Students can browse open class sections, register
-or cancel, see their weekly timetable and look up their grades.
-Administrators can manage courses, semesters, class sections and schedules, and
-monitor registrations in real time.
+This experience inspired the project that I would like to describe in this
+report: a \textbf{Course Management and Registration System}. It is a web
+application that I designed and built by myself between January and March
+2026. Students use it to register for classes and see their timetable and
+grades, while the academic office uses it to manage courses, semesters and
+classes.
 
+In this report, I will first explain why I chose this project and what I
+wanted to achieve. Next, I will describe what the system does and how I built
+it. After that, I will focus on the two biggest challenges I faced and how I
+solved them. Finally, I will reflect on what I learned from the experience.
 
-% =========================== 2. BACKGROUND ===========================
-\section{Background and Motivation}
-\label{sec:background}
+% =========================== 2. MOTIVATION ===========================
+\section{Why I Chose This Project}
 
-\subsection{The problem}
-Course registration looks simple, but it hides several hard problems:
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Capacity:} each class section has a fixed number of seats, and
-        many students may try to take the last seat at the same time.
-  \item \textbf{Timetable conflicts:} a student must not register for two
-        sections that meet at the same time.
-  \item \textbf{Time windows:} registration and cancellation are only allowed
-        during a period set by the academic office.
-  \item \textbf{Account status:} suspended students must not be able to register.
-  \item \textbf{Traceability:} cancelled registrations should be kept for
-        auditing instead of being deleted.
-\end{itemize}
+I chose this project for two main reasons. The first reason is personal: as a
+student, I understand the problem very well, so I knew exactly what a good
+system should do. The second reason is professional: I wanted a project that
+was large enough to practise everything I had learned in my software courses,
+from designing a database to building a user interface.
 
-\subsection{Objectives}
-My objectives for the project were to:
-\begin{enumerate}[leftmargin=1.5em]
-  \item build a working web application with separate student and admin portals;
-  \item enforce all registration rules on the server so that the data always
-        stays consistent, even under concurrent requests;
-  \item design a clean, normalised relational database;
-  \item make the system easy to deploy with a single command using Docker;
-  \item practise professional development habits: a layered architecture,
-        documentation and version control with Git.
+Before writing any code, I set myself four clear goals:
+\begin{enumerate}[leftmargin=1.6em]
+  \item to build a \textbf{complete} system with two separate areas, one for
+        students and one for administrators;
+  \item to make sure the system is \textbf{fair and reliable}, so that it never
+        accepts more students than a class can hold;
+  \item to make it \textbf{easy to use}, with clear messages when something
+        goes wrong;
+  \item to make it \textbf{easy to install}, so that anyone can run it with a
+        single command.
 \end{enumerate}
 
-% =========================== 3. FEATURES ===========================
-\section{Main Features}
-\label{sec:features}
+% =========================== 3. WHAT IT DOES ===========================
+\section{What the System Does}
 
-The system has two portals. A user logs in once, and the JSON Web Token they
-receive tells the application which portal to open.
-
-\begin{table}[htbp]
-\centering
-\renewcommand{\arraystretch}{1.35}
-\begin{tabularx}{\textwidth}{>{\bfseries}l X}
-\toprule
-\multicolumn{2}{l}{\color{primary}\textbf{Student portal}} \\
-\midrule
-Student information & View personal profile, major, academic year and status. \\
-Course registration & Browse open sections, register with one click, cancel a registration; conflicts are reported immediately. \\
-Timetable & Weekly timetable built from the student's registered sections (supports odd/even weeks). \\
-Grade lookup & Midterm, final and total scores, letter grades and GPA. \\
-\midrule
-\multicolumn{2}{l}{\color{primary}\textbf{Administrator portal}} \\
-\midrule
-Course management & Create, edit and deactivate courses; set credits and prerequisites. \\
-Semester management & Define semesters, start/end dates and the registration window; mark the current semester. \\
-Class section management & Open sections for a course, assign lecturer, room and capacity. \\
-Schedule management & Define day of week, periods, room and week type for each section. \\
-Registration tracking & Monitor all enrollments and section fill rates. \\
-\bottomrule
-\end{tabularx}
-\caption{Main features of the two portals}
-\end{table}
-
-The user interface was built with my own CSS in a ``glassmorphism'' style and
-includes a \textbf{dark mode}, implemented with a React context so that the
-theme choice applies across all pages.
-
-% =========================== 4. DESIGN ===========================
-\section{System Design}
-\label{sec:design}
-
-\subsection{Technology stack}
-
-\begin{table}[htbp]
-\centering
-\renewcommand{\arraystretch}{1.3}
-\begin{tabularx}{\textwidth}{>{\bfseries}l X}
-\toprule
-Layer & Technologies \\
-\midrule
-Frontend  & React 19, Vite, React Router, custom CSS (glassmorphism, dark mode) \\
-Backend   & Node.js 18+, Express.js 4, Sequelize 6 ORM, express-validator \\
-Database  & MySQL 8.0 (utf8mb4 for full Vietnamese text support) \\
-Security  & JWT authentication, bcrypt password hashing, role-based access control \\
-DevOps    & Docker \& Docker Compose, Nginx (serves the built frontend), npm workspaces (monorepo), Makefile \\
-\bottomrule
-\end{tabularx}
-\caption{Technology stack}
-\end{table}
-
-\subsection{Architecture}
-
-The project is organised as a \textbf{monorepo} with two workspaces,
-\texttt{client} and \texttt{server}. The backend follows a layered
-architecture, where each layer has a single responsibility
-(Figure~\ref{fig:arch}):
-
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Routes} map URLs such as \texttt{POST /api/enrollments} to controllers.
-  \item \textbf{Middleware} handles authentication (JWT), authorisation
-        (student/admin roles), input validation and errors.
-  \item \textbf{Controllers} read the request and send the response.
-  \item \textbf{Services} contain the business logic, for example the
-        enrollment and schedule-conflict rules.
-  \item \textbf{Models} (Sequelize) map JavaScript objects to MySQL tables.
-\end{itemize}
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[
-  box/.style={draw=primary, rounded corners=4pt, thick, fill=primary!6,
-              minimum width=3.0cm, minimum height=1.0cm, align=center, font=\small},
-  layer/.style={draw=accent, rounded corners=3pt, fill=accent!8,
-              minimum width=2.6cm, minimum height=0.7cm, align=center, font=\footnotesize},
-  arr/.style={-{Stealth[length=2.5mm]}, thick, primary}
-]
-  \node[layer] (routes) {Routes};
-  \node[layer, below=0.25cm of routes] (mw) {Middleware\\(JWT, roles, validation)};
-  \node[layer, below=0.25cm of mw] (ctrl) {Controllers};
-  \node[layer, below=0.25cm of ctrl] (svc) {Services\\(business rules)};
-  \node[layer, below=0.25cm of svc] (models) {Sequelize Models};
-  \node[draw=primary, dashed, rounded corners=6pt, inner sep=8pt,
-        fit=(routes)(models), label={[font=\small\bfseries, text=primary]above:Express API}] (api) {};
-  \node[box, left=2.6cm of api] (client) {\textbf{React Client}\\ \footnotesize Vite + Nginx};
-  \node[box, right=2.0cm of api] (db) {\textbf{MySQL 8}\\ \footnotesize 8 tables};
-  \draw[arr] (client) -- node[above, font=\scriptsize]{HTTPS / JSON} node[below, font=\scriptsize]{Bearer JWT} (api);
-  \draw[arr] (api) -- node[above, font=\scriptsize]{SQL} (db);
-\end{tikzpicture}
-\caption{Overall architecture. All three parts run as Docker containers.}
-\label{fig:arch}
-\end{figure}
-
-Every API response uses the same JSON format
-(\texttt{success}, \texttt{message}, \texttt{data}), and errors are thrown as a
-custom \texttt{ApiError} class with an HTTP status code, so the frontend can
-handle all errors in one place.
-
-\subsection{Database design}
-
-The database has eight tables. Table~\ref{tab:db} summarises them and
-Figure~\ref{fig:erd} shows the main relationships.
-
-\begin{table}[htbp]
-\centering
-\renewcommand{\arraystretch}{1.25}
-\begin{tabularx}{\textwidth}{>{\ttfamily}l X}
-\toprule
-\textrm{\textbf{Table}} & \textbf{Purpose} \\
-\midrule
-students    & Student accounts and profiles (ID, major, academic year, status) \\
-admins      & Administrator accounts \\
-courses     & Course catalogue with credits and an optional prerequisite (self-reference) \\
-semesters   & Semesters with dates and the registration window (\texttt{reg\_open}, \texttt{reg\_close}) \\
-sections    & Class sections of a course in a semester, with lecturer, room and capacity \\
-schedules   & Meeting times of a section: day, start/end period, room, week type \\
-enrollments & Which student registered for which section, and the status \\
-results     & Midterm, final and total scores and letter grades \\
-\bottomrule
-\end{tabularx}
-\caption{Database tables}
-\label{tab:db}
-\end{table}
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[
-  ent/.style={draw=primary, thick, rounded corners=3pt, fill=primary!6,
-              minimum width=2.3cm, minimum height=0.8cm, font=\small\ttfamily},
-  rel/.style={thick, primary!70},
-  lbl/.style={font=\scriptsize\itshape, fill=white, inner sep=1pt}
-]
-  \node[ent] (course) at (0,2.2) {courses};
-  \node[ent] (sem)    at (0,0)   {semesters};
-  \node[ent] (sec)    at (4,1.1) {sections};
-  \node[ent] (sch)    at (8,2.2) {schedules};
-  \node[ent] (enr)    at (8,0)   {enrollments};
-  \node[ent] (stu)    at (12,0)  {students};
-  \node[ent] (res)    at (12,2.2){results};
-  \draw[rel] (course) -- node[lbl]{1 : N} (sec);
-  \draw[rel] (sem) -- node[lbl]{1 : N} (sec);
-  \draw[rel] (sec) -- node[lbl]{1 : N} (sch);
-  \draw[rel] (sec) -- node[lbl]{1 : N} (enr);
-  \draw[rel] (stu) -- node[lbl]{1 : N} (enr);
-  \draw[rel] (stu) -- node[lbl]{1 : N} (res);
-  \draw[rel] (course.north west) .. controls +(-1,1) and +(1,1) .. node[lbl, above]{prerequisite} (course.north east);
-\end{tikzpicture}
-\caption{Simplified entity--relationship diagram}
-\label{fig:erd}
-\end{figure}
-
-Important rules are also enforced inside the database, as a second line of
-defence:
-\begin{itemize}[leftmargin=1.5em]
-  \item a \textbf{unique index} on \texttt{(student\_id, section\_id)} in
-        \texttt{enrollments} prevents duplicate registrations;
-  \item a \textbf{CHECK constraint} guarantees
-        \texttt{current\_students <= max\_students};
-  \item scores must be between 0 and 10, and \texttt{day\_of\_week} must be valid;
-  \item indexes on foreign keys and status columns keep common queries fast.
-\end{itemize}
-
-% =========================== 5. BUSINESS RULES ===========================
-\section{Registration Business Rules}
-\label{sec:rules}
-
-The heart of the project is the enrollment service. I wrote down nine business
-rules (BR01--BR09) before coding and then implemented each one explicitly.
-
-\begin{table}[htbp]
-\centering
-\renewcommand{\arraystretch}{1.25}
-\begin{tabularx}{\textwidth}{>{\bfseries}l X}
-\toprule
-Rule & Description \\
-\midrule
-BR01 & A student cannot register for the same section twice. \\
-BR02 & Registration is refused when the section is full. \\
-BR03 & Registration is only allowed inside the semester's registration window. \\
-BR04 & The system detects and blocks timetable conflicts. \\
-BR05 & Suspended students cannot register. \\
-BR06 & Closed or cancelled sections cannot be registered. \\
-BR07 & Cancellation is only allowed inside the registration window. \\
-BR08 & The section's student counter decreases automatically on cancellation. \\
-BR09 & Cancellations are \emph{soft deletes}: the record is kept with status \texttt{cancelled}. \\
-\bottomrule
-\end{tabularx}
-\caption{Business rules for registration and cancellation}
-\end{table}
-
-\subsection{Preventing race conditions}
-The most difficult rule was BR02. If two students try to take the last seat at
-the same moment, a naive implementation reads ``1 seat left'' for both and
-registers both, so the class becomes over-full. To prevent this, the whole
-registration runs inside a \textbf{database transaction}, and the section row
-is locked with \texttt{SELECT \ldots{} FOR UPDATE}. The second request has to
-wait until the first one commits, and then it sees that the section is full.
-
-\begin{lstlisting}
-const transaction = await sequelize.transaction();
-try {
-  // Row-level lock: other requests for this section must wait
-  const section = await Section.findByPk(sectionId, {
-    include: [{ model: Semester, as: 'semester' }],
-    lock: transaction.LOCK.UPDATE,
-    transaction,
-  });
-  if (section.current_students >= section.max_students) {
-    throw ApiError.badRequest('Section is full');          // BR02
-  }
-  // ... BR01, BR03-BR06 checks ...
-  await Enrollment.create({ student_id, section_id, status: 'enrolled' }, { transaction });
-  await Section.increment('current_students', { by: 1, where: { section_id }, transaction });
-  await transaction.commit();
-} catch (error) {
-  await transaction.rollback();                             // all-or-nothing
-  throw error;
-}
-\end{lstlisting}
-
-\subsection{Detecting timetable conflicts}
-For BR04, the schedule service compares every meeting time of the new section
-with the meeting times of all sections the student is already enrolled in for
-the same semester. Two meetings conflict when they are on the same day, their
-period ranges overlap, and their week types are compatible (a class held only
-in odd weeks never clashes with one held only in even weeks):
-
-\begin{lstlisting}
-_isConflict(a, b) {
-  if (a.day_of_week !== b.day_of_week) return false;
-  // [startA, endA] ∩ [startB, endB] ≠ ∅
-  const overlap = a.start_period <= b.end_period && a.end_period >= b.start_period;
-  if (!overlap) return false;
-  if (a.week_type === 'odd'  && b.week_type === 'even') return false;
-  if (a.week_type === 'even' && b.week_type === 'odd')  return false;
-  return true;
-}
-\end{lstlisting}
-
-When a conflict is found, the API returns HTTP \texttt{409 Conflict} together
-with the details of the clashing section, so the student knows exactly which
-class to change.
-
-% =========================== 6. PROCESS ===========================
-\section{Development Process}
-\label{sec:process}
-
-I developed the project between January and March 2026 and used Git
-throughout. The work went through five main stages:
-
-\begin{enumerate}[leftmargin=1.5em]
-  \item \textbf{Analysis (January).} I studied how registration works at my
-        university, listed the features for each type of user and wrote the
-        nine business rules.
-  \item \textbf{Database and backend (March).} I designed the eight-table
-        schema, wrote the SQL migration and seed data, and implemented the
-        Express API: authentication, courses, semesters, sections, schedules,
-        enrollments and results.
-  \item \textbf{Restructuring.} When the project grew, I reorganised it into a
-        monorepo with \texttt{client} and \texttt{server} workspaces, so both
-        can be started with one command (\texttt{npm run dev}).
-  \item \textbf{Frontend.} I built the student site and the admin site in
-        React, then refined the UI and added dark mode.
-  \item \textbf{Deployment and documentation.} I added Dockerfiles and a
-        Docker Compose file that starts MySQL, the API and the Nginx frontend
-        together, with health checks. I also wrote documentation for the
-        backend API, the database and Docker deployment.
-\end{enumerate}
-
-% =========================== 7. CHALLENGES ===========================
-\section{Challenges and Solutions}
-\label{sec:challenges}
+The system has two ``portals'', or areas, and each user only sees the area that
+matches their role. Table~\ref{tab:features} summarises the main features of
+each one.
 
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.35}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm} X}
+\renewcommand{\arraystretch}{1.3}
+\small
+\begin{tabularx}{\textwidth}{X X}
 \toprule
-\textbf{Challenge} & \textbf{Solution} \\
+\textbf{\color{primary}Student portal} & \textbf{\color{primary}Administrator portal} \\
 \midrule
-Over-booking when many students register at once &
-Database transactions with row-level locking, atomic counter updates and a CHECK constraint as a safety net. \\
-Correct timetable-conflict logic, including odd/even weeks &
-A small, pure function \texttt{\_isConflict} that is easy to reason about and test. \\
-Keeping history of cancellations &
-Soft delete with a \texttt{status} field, \texttt{cancelled\_at} and \texttt{cancel\_reason}; re-registration reuses the old record. \\
-Securing two kinds of users &
-JWT with a role claim, plus \texttt{authorizeAdmin}, \texttt{authorizeStudent} and \texttt{authorizeSelf} middleware. \\
-``It works on my machine'' &
-Docker Compose with environment files for development, Docker and production. \\
+View personal information and study status &
+Create and update courses and their prerequisites \\
+Register for a class, or cancel it, with one click &
+Set up semesters and the registration period \\
+See a weekly timetable of all registered classes &
+Open classes and assign lecturers and rooms \\
+Look up scores, letter grades and GPA &
+Monitor how many students have registered \\
 \bottomrule
 \end{tabularx}
-\caption{Main challenges and how I solved them}
+\caption{Main features of the two portals}
+\label{tab:features}
 \end{table}
 
-% =========================== 8. LESSONS ===========================
+For example, when a student wants to take a class, they simply open the
+registration page, choose a class and click \emph{Register}. Behind the scenes,
+the system checks several rules before it accepts the request. If one rule is
+broken, for instance if the class is already full, the student sees a clear
+message explaining why. I also added a \emph{dark mode}, which is more
+comfortable for the eyes when working at night.
+
+% =========================== 4. HOW I BUILT IT ===========================
+\section{How I Built It}
+
+\subsection{The three main parts}
+Like most modern web applications, my system is made of three parts that work
+together, as shown in Figure~\ref{fig:parts}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw=primary, rounded corners=5pt, thick, fill=primary!6,
+              minimum width=3.9cm, minimum height=1.55cm, align=center, font=\small},
+  arr/.style={{Stealth[length=2.5mm]}-{Stealth[length=2.5mm]}, thick, primary}
+]
+  \node[box] (fe) {\textbf{Front end}\\ what users see\\ \footnotesize\itshape React};
+  \node[box, right=1.5cm of fe] (be) {\textbf{Back end}\\ checks the rules\\ \footnotesize\itshape Node.js \& Express};
+  \node[box, right=1.5cm of be] (db) {\textbf{Database}\\ stores the data\\ \footnotesize\itshape MySQL};
+  \draw[arr] (fe) -- (be);
+  \draw[arr] (be) -- (db);
+\end{tikzpicture}
+\caption{The three main parts of the system}
+\label{fig:parts}
+\end{figure}
+
+The \textbf{front end} is the part that users see and click on in their web
+browser. I built it with React, a popular tool for creating interactive web
+pages. The \textbf{back end} runs on a server. It receives every request,
+checks who the user is, applies the registration rules and then sends back an
+answer. I wrote it in JavaScript using Node.js and Express. Finally, the
+\textbf{database} stores all the information, such as students, courses,
+classes, timetables and grades, in eight connected tables. I used MySQL for
+this part.
+
+To keep the system secure, every user must log in, and passwords are never
+stored as plain text. In addition, I packaged all three parts with a tool
+called \emph{Docker}, so that the whole system can be started with a single
+command on any computer.
+
+\subsection{My working process}
+I organised the work into five stages:
+\begin{enumerate}[leftmargin=1.6em]
+  \item \textbf{Analysis (January).} I studied how registration works at my
+        university and wrote down nine rules that the system must follow, for
+        example ``a student cannot register for a full class''.
+  \item \textbf{Database and back end (March).} I designed the database and
+        built the back end, which contains all the rules.
+  \item \textbf{Reorganisation.} As the project grew, I restructured the code
+        so that the front end and the back end live in one well-organised
+        project.
+  \item \textbf{Front end.} I built the student and administrator websites
+        and improved the design.
+  \item \textbf{Deployment and documentation.} I prepared the system for
+        installation with Docker and wrote installation and technical documentation.
+\end{enumerate}
+Throughout the project, I used Git, a version control tool, to save every step
+of my work. This meant that I could always go back if I made a mistake.
+
+% =========================== 5. CHALLENGES ===========================
+\section{The Biggest Challenges}
+
+Although many parts of the project were straightforward, two problems took
+much more time and thought than I had expected.
+
+\subsection{Challenge 1: the last seat}
+Imagine a class with 40 seats, and 39 students have already registered. Now,
+two students click \emph{Register} at exactly the same moment. In a simple
+system, both requests ask the database ``Is there a free seat?'', both receive
+the answer ``Yes, one seat'', and both students are accepted. As a result, the
+class ends up with 41 students, which is clearly unfair and causes problems
+for the lecturer.
+
+At first, I did not even notice this problem, because it never happened when I
+tested the system alone. However, after reading about how real registration
+systems work, I realised that it would definitely happen on a busy
+registration day. To solve it, I used a database feature called a
+\textbf{transaction with a lock}. In simple terms, when the first student starts
+registering for a class, the system ``locks'' that class for a fraction of a
+second. The second student has to wait until the first registration is
+complete. When it is their turn, the system correctly sees that the class is
+full and shows a polite message. In addition, I added a rule inside the
+database itself, so that the number of students can never be higher than the
+number of seats, even if there were a mistake in my code.
+
+\subsection{Challenge 2: timetable clashes}
+The second challenge was to stop students from registering for two classes
+that take place at the same time. This sounds easy, but real timetables are
+more complicated than they look. Some classes, for instance, only meet in odd
+weeks, while others only meet in even weeks. I eventually defined a clear rule:
+two classes clash only if \emph{all three} of the following are true:
+\begin{itemize}[leftmargin=1.6em]
+  \item they are on the same day of the week;
+  \item their lesson periods overlap;
+  \item their weeks are compatible (an odd-week class never clashes with an
+        even-week class).
+\end{itemize}
+Whenever a clash is found, the system does not simply say ``Error''. Instead,
+it tells the student exactly which of their classes is causing the problem, so
+they know what to change.
+
+% =========================== 6. WHAT I LEARNED ===========================
 \section{What I Learned}
-\label{sec:lessons}
 
-This project taught me much more than any single course exercise:
+This project taught me much more than any single course exercise. On the
+technical side, I became confident with all three parts of a web application,
+and I now understand why reliability problems like ``the last seat'' matter so
+much in real systems. More importantly, however, I developed several skills
+that I believe will be useful in any job.
 
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Technical skills.} I became confident with React, Express,
-        Sequelize and MySQL, and I now understand why transactions and locks
-        matter in real systems.
-  \item \textbf{Thinking before coding.} Writing the business rules first made
-        the implementation much clearer, and each rule maps to a few lines of
-        code that are easy to find.
-  \item \textbf{Clean architecture.} Separating routes, controllers, services
-        and models made it easy to change one part without breaking others.
-  \item \textbf{Professional habits.} Using Git, writing documentation and
-        containerising the application are habits I will keep in future
-        projects.
+\begin{itemize}[leftmargin=1.6em]
+  \item \textbf{Planning before acting.} Writing down the nine rules before
+        coding saved me a great deal of time, because I always knew exactly
+        what I was building.
+  \item \textbf{Learning independently.} Many solutions, such as the
+        transaction lock, were not taught in my classes. I had to find
+        information in documentation and articles, most of which were written
+        in English.
+  \item \textbf{Writing clearly.} I wrote documentation so that other people
+        could install and use the system. This taught me to explain technical
+        ideas in simple, well-organised language, which is also the aim of
+        this report.
+  \item \textbf{Managing my time.} Breaking the work into stages helped me to
+        make steady progress and to stay motivated.
 \end{itemize}
 
-\subsection{Future improvements}
-Next, I would like to enforce course prerequisites automatically, add a full
-automated test suite with Jest, offer a waiting list with email notifications
-for full sections, and add caching and wider rate limiting (today only the
-login route is limited) to handle the peak load when registration opens.
+If I had more time, I would like to add automatic tests, a waiting list for
+full classes with email notifications, and an automatic check that students
+have completed the required prerequisite courses.
 
-% =========================== 9. CONCLUSION ===========================
+% =========================== 7. CONCLUSION ===========================
 \section{Conclusion}
 
-The Course Management \& Registration System is the project I am most proud
-of so far. It solves a real problem that every student experiences, and it
-works from end to end: from the React interface, through a secure Express API,
-to a carefully designed MySQL database, all packaged with Docker. Most
-importantly, building it taught me how to turn a set of real-world rules into
-reliable software, and how to organise a project so that it can keep growing.
+In conclusion, the Course Management and Registration System is the project I
+am most proud of so far. It started from a problem that I experienced myself
+as a student, and it became a complete system that is fair, easy to use and
+easy to install. Along the way, I faced real challenges, such as protecting the
+last seat in a class and detecting timetable clashes, and solving them taught
+me to plan carefully, learn independently and communicate clearly. Above all,
+this project showed me that good software is not only about writing code, but
+about understanding people's problems and solving them in a reliable way.
 
 \end{document}
