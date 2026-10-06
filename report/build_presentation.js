@@ -46,6 +46,14 @@ async function icon(Comp, color, size = 256) {
     ],
   });
   pres.defineSlideMaster({
+    title: "DARK_TITLE_IMAGE",
+    background: { color: HEX.dark },
+    objects: [
+      { placeholder: { options: { name: "title", type: "title", x: 0.6, y: 1.3, w: 4.5, h: 1.75, fontSize: 34, bold: true, color: C.background1, valign: "top", align: "left", fontFace: THEME.headFontFace }, text: "" } },
+      { placeholder: { options: { name: "body", type: "body", x: 0.6, y: 3.1, w: 4.4, h: 1.0, fontSize: 16, color: C.accent5, valign: "top" }, text: "" } },
+    ],
+  });
+  pres.defineSlideMaster({
     title: "CONTENT",
     background: { color: HEX.white },
     margin: [0.5, 0.5, 0.5, 0.5],
@@ -69,16 +77,29 @@ async function icon(Comp, color, size = 256) {
   function card(slide, x, y, w, h, fill = C.background2) {
     slide.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w, h, rectRadius: 0.08, fill: { color: fill }, line: { type: "none" }, objectName: name("card") });
   }
+  const SHOTS = require("path").join(__dirname, "screenshots") + "/";
+  const RATIO = 1600 / 956;
+  function shot(slide, file, x, y, w, caption) {
+    const h = w / RATIO;
+    slide.addShape(pres.shapes.RECTANGLE, { x: x - 0.02, y: y - 0.02, w: w + 0.04, h: h + 0.04, fill: { color: HEX.white }, line: { color: HEX.line, width: 0.75 }, shadow: shadow(), objectName: name("shot-frame") });
+    slide.addImage({ path: SHOTS + file, x, y, w, h, objectName: name("screenshot"), altText: caption || "Screenshot of the system" });
+    if (caption) {
+      const cw = Math.min(w - 0.2, 0.12 + caption.length * 0.085);
+      slide.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: x + 0.1, y: y + h - 0.42, w: cw, h: 0.32, rectRadius: 0.06, fill: { color: HEX.dark }, line: { type: "none" }, objectName: name("caption-bg") });
+      slide.addText(caption, { x: x + 0.1, y: y + h - 0.42, w: cw, h: 0.32, fontSize: 12, bold: true, color: C.background1, align: "center", valign: "middle", margin: 0, isTextBox: true, objectName: name("caption") });
+    }
+    return h;
+  }
   const T = (slide, text, o) => slide.addText(text, Object.assign({ isTextBox: true, margin: 0, valign: "top", objectName: name("text") }, o));
 
   // ================= 1. Title =================
   pres.addSection({ title: "Opening" });
-  let s = pres.addSlide({ masterName: "DARK_TITLE", sectionTitle: "Opening" });
-  T(s, "DESCRIBE A PROJECT WHICH I HAVE WORKED ON", { x: 0.7, y: 1.0, w: 8.7, h: 0.4, fontSize: 13, bold: true, color: C.accent2, charSpacing: 2 });
+  let s = pres.addSlide({ masterName: "DARK_TITLE_IMAGE", sectionTitle: "Opening" });
+  T(s, "DESCRIBE A PROJECT WHICH I HAVE WORKED ON", { x: 0.7, y: 0.75, w: 4.4, h: 0.4, fontSize: 11, bold: true, color: C.accent2, charSpacing: 1 });
+  shot(s, "student-registration-dark.jpg", 5.3, 1.35, 4.2);
   s.addText("Course Management & Registration System", { placeholder: "title" });
   s.addText("A web application that makes course registration fair, reliable and simple", { placeholder: "body" });
   T(s, "Your Name  ·  Student ID  ·  English Writing & Presentation Skills", { x: 0.7, y: 4.65, w: 8.7, h: 0.4, fontSize: 14, color: C.background1 });
-  await iconCircle(s, fa.FaGraduationCap, 8.35, 0.55, 1.0, HEX.teal, HEX.orange);
   s.addNotes("Good morning, everyone. My name is [your name]. Today, I would like to tell you about a project that I have worked on: a course registration system for university students. I will explain why I built it, what it does, the biggest challenges I faced, and what I learned along the way.");
 
   // ================= 2. Agenda =================
@@ -98,7 +119,7 @@ async function icon(Comp, color, size = 256) {
     T(s, head, { x: x + 0.25, y: y + 1.2, w: 1.7, h: 0.5, fontSize: 18, bold: true, color: C.text2 });
     T(s, sub, { x: x + 0.25, y: y + 1.8, w: 1.7, h: 1.1, fontSize: 14, color: C.text1 });
   });
-  s.addNotes("My presentation is divided into four parts. First, I will talk about why I chose this project. Second, I will show you what the system does and how it works. Third, I will focus on the two hardest problems I had to solve. And finally, I will share what I learned. The presentation will take about seven minutes, and I will be happy to answer your questions at the end.");
+  s.addNotes("My presentation is divided into four parts. First, I will talk about why I chose this project. Second, I will show you what the system does and how it works. Third, I will focus on the two hardest problems I had to solve. And finally, I will share what I learned. The presentation will take about eight minutes, and I will be happy to answer your questions at the end.");
 
   // ================= 3. Problem =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Context" });
@@ -137,24 +158,24 @@ async function icon(Comp, color, size = 256) {
   ], { x: 0.8, y: 3.75, w: 8.4, h: 0.95, fontSize: 16, valign: "middle" });
   s.addNotes("Here is the project at a glance. The system has two portals: one for students and one for administrators. It checks nine rules every time a student signs up for a class. I built it in about three months, from January to March 2026, and I designed and developed it by myself. My main goal was simple: the system must be fair, reliable and easy to use, even on the busiest day.");
 
-  // ================= 5. Features =================
+  // ================= 5. Student portal =================
   pres.addSection({ title: "Solution" });
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
-  s.addText("Two portals, one system", { placeholder: "title" });
-  const portals = [
-    [fa.FaUserGraduate, "Student portal", ["Personal information", "One-click course registration and cancellation", "Weekly timetable (odd / even weeks)", "Grade lookup and GPA"], HEX.teal],
-    [fa.FaUserCog, "Admin portal", ["Course management and prerequisites", "Semesters and registration windows", "Class sections, lecturers and rooms", "Schedules and registration tracking"], HEX.orange],
-  ];
-  for (let i = 0; i < 2; i++) {
-    const [ic, head, items, col] = portals[i];
-    const x = 0.5 + i * 4.6, y = 1.3;
-    card(s, x, y, 4.4, 3.6);
-    await iconCircle(s, ic, x + 0.3, y + 0.3, 0.75, col, HEX.white);
-    T(s, head, { x: x + 1.25, y: y + 0.45, w: 2.9, h: 0.45, fontSize: 20, bold: true, color: C.text2 });
-    T(s, items.map((t, k) => ({ text: t, options: { bullet: true, breakLine: k < items.length - 1 } })),
-      { x: x + 0.35, y: y + 1.3, w: 3.8, h: 2.1, fontSize: 15, color: C.text1, paraSpaceAfter: 8 });
-  }
-  s.addNotes("Now, let's move on to what the system actually does. Students can view their information, register for or cancel a class with just one click, see their weekly timetable, and check their grades. Administrators, on the other hand, can manage courses, semesters and classes, and they can monitor how many students have registered. Each user only sees the portal that matches their role.");
+  s.addText("The student portal", { placeholder: "title" });
+  shot(s, "student-registration.jpg", 0.5, 1.25, 5.75, "Register or cancel with one click");
+  shot(s, "student-timetable.jpg", 6.6, 1.25, 2.9, "Weekly timetable");
+  shot(s, "student-grades.jpg", 6.6, 1.25 + 2.9 / RATIO + 0.25, 2.9, "Grades and GPA");
+  T(s, "Real screenshots of the running system", { x: 0.5, y: 4.8, w: 5.75, h: 0.3, fontSize: 12, italic: true, color: C.accent4 });
+  s.addNotes("Now, let's move on to what the system actually does. Rather than just describing it, I would like to show you some real screenshots. This is the student portal. On the left is the registration page: students can see every class, its timetable and how many seats are left, and they can register or cancel with just one click. On the right, you can see the weekly timetable, which is built automatically, and the grades page with the student's GPA.");
+
+  // ================= 5b. Admin portal =================
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
+  s.addText("The administrator portal", { placeholder: "title" });
+  shot(s, "admin-sections.jpg", 0.5, 1.25, 5.75, "Open classes, assign lecturers and rooms");
+  shot(s, "admin-semesters.jpg", 6.6, 1.25, 2.9, "Registration periods");
+  shot(s, "admin-schedule.jpg", 6.6, 1.25 + 2.9 / RATIO + 0.25, 2.9, "Room schedule");
+  T(s, "Real screenshots of the running system", { x: 0.5, y: 4.8, w: 5.75, h: 0.3, fontSize: 12, italic: true, color: C.accent4 });
+  s.addNotes("And this is the administrator portal. Here, the academic office can open new classes and assign lecturers and rooms. They can also set the registration period for each semester and see the schedule of every room in one view. Each user only sees the portal that matches their role.");
 
   // ================= 6. How it works =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
