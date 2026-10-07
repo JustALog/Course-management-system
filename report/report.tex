@@ -22,6 +22,8 @@
 \usepackage{fancyhdr}
 \usepackage{caption}
 \usepackage{float}
+\usepackage{graphicx}
+\graphicspath{{screenshots/}}
 \usepackage[hidelinks]{hyperref}
 
 % ---------- Fill in your details here ----------
@@ -147,6 +149,46 @@ example because the class is already full, the student sees a clear message
 that explains the problem. I also added a \emph{dark mode}, because it is more
 comfortable for the eyes when students use the website at night.
 
+Figure~\ref{fig:student} shows two pages from the student portal. On the
+registration page, students can see every class in the semester, its
+timetable, the room and how many seats are left. The timetable page is created
+automatically from the classes that a student has registered for, so students
+do not need to draw their timetable by hand any more.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.49\textwidth]{student-registration.jpg}\hfill
+\includegraphics[width=0.49\textwidth]{student-timetable.jpg}
+\caption{The registration page (left) and the weekly timetable (right)}
+\label{fig:student}
+\end{figure}
+
+The administrator portal looks similar, but it has different tools. For
+example, Figure~\ref{fig:admin} shows the page where staff can open a new class,
+choose a lecturer and a room, and decide how many students can join it. Staff
+can also see at once which classes are almost full and which classes still
+have many free seats.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{admin-sections.jpg}
+\caption{The page where administrators manage classes}
+\label{fig:admin}
+\end{figure}
+
+Finally, Figure~\ref{fig:extra} shows the page where students can check their
+results, and the registration page in dark mode. On the results page, each
+course has a midterm score, a final score, a total score and a letter grade,
+and the system calculates the GPA automatically.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.49\textwidth]{student-grades.jpg}\hfill
+\includegraphics[width=0.49\textwidth]{student-registration-dark.jpg}
+\caption{The results page (left) and the registration page in dark mode (right)}
+\label{fig:extra}
+\end{figure}
+
 \section{How I Built It}
 
 \subsection{The three main parts}
@@ -242,6 +284,37 @@ When the system finds a clash, it does not only say ``Error''. Instead, it
 tells the student which of their classes is causing the problem, so they know
 what they need to change.
 
+\subsection{Smaller difficulties}
+Apart from these two big problems, I also had some smaller difficulties. The
+first one was Vietnamese text. At the beginning, some names with Vietnamese
+letters and accents were not shown correctly. After
+searching online, I found out that I had to choose a special character setting
+in the database, which is called \emph{utf8mb4}. After I changed it, all the
+names appeared correctly.
+
+The second difficulty was Docker. I had never used it before, so at first I
+did not understand why the back end could not connect to the database inside
+Docker. I spent almost a whole day reading guides and watching videos before I
+understood how the different parts talk to each other. Although it was
+frustrating, I am glad that I did not give up, because now I can use Docker in
+my future projects.
+
+\section{Testing the System}
+
+Before I could say that the system was finished, I had to make sure that it
+really worked. To do this, I wrote a small program that fills the database with
+sample data: 10 students, 2 administrators, 14 courses and 4 semesters. With
+this data, I could log in as different users and try every feature, just like
+a real student or a real member of staff would do.
+
+I paid special attention to the nine rules. For each rule, I tried to break it
+on purpose. For example, I tried to register for a full class, to register
+after the registration period had finished, and to register for two classes
+at the same time. Each time, I checked that the system stopped me and showed
+the correct message. When something did not work as I had expected, I fixed
+the code and tested it again. This process took a lot of time, but it gave me
+confidence that the system is fair and that it works correctly.
+
 \section{What I Have Learned}
 
 I have learned much more from this project than from any normal homework
@@ -280,5 +353,12 @@ them taught me to plan carefully, to learn by myself and to explain my ideas
 clearly. Most importantly, this project has shown me that good software is not
 only about writing code. It is also about understanding people's problems and
 finding good solutions for them.
+
+Looking back, I am happy that I chose a project which is connected to my own
+life as a student. Because I cared about the problem, I stayed motivated even
+when things went wrong. In the future, I hope that I can improve this system
+further and maybe test it with real students at my university. I believe that
+the skills I have learned from this project will help me a lot in my studies
+and in my future career.
 
 \end{document}
