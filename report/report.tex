@@ -72,52 +72,51 @@
 % =========================== 1. INTRODUCTION ===========================
 \section{Introduction}
 
-At the start of every semester, thousands of students at my university sit in
-front of their computers and wait for the course registration page to open.
-When it finally does, everyone clicks at the same time. Within minutes, popular
-classes are full, some students discover that two of their classes are at the
-same time, and many are not even sure whether their registration was saved. I
-have been through this experience several times, and it was always stressful.
+At the start of every semester, thousands of students at my university wait in
+front of their computers for the course registration page to open. When it
+finally opens, everyone clicks at the same time. After only a few minutes, the
+popular classes are full. Some students find out that two of their classes are
+at the same time, and many of them are not even sure if their registration has
+been saved. I have had this experience many times, and it was always stressful.
 
-This experience inspired the project that I would like to describe in this
-report: a \textbf{Course Management and Registration System}. It is a web
-application that I designed and built by myself between January and March
-2026. Students use it to register for classes and see their timetable and
-grades, while the academic office uses it to manage courses, semesters and
-classes.
+This problem gave me the idea for the project that I am going to describe in
+this report: a \textbf{Course Management and Registration System}. It is a
+website that I designed and built by myself between January and March 2026.
+Students can use it to register for classes and check their timetable and
+grades. At the same time, the university staff can use it to manage courses,
+semesters and classes.
 
 In this report, I will first explain why I chose this project and what I
-wanted to achieve. Next, I will describe what the system does and how I built
-it. After that, I will focus on the two biggest challenges I faced and how I
-solved them. Finally, I will reflect on what I learned from the experience.
+wanted to achieve. Then, I will describe what the system does and how I built
+it. After that, I will talk about the two biggest problems I had and how I
+solved them. Finally, I will explain what I have learned from this project.
 
-% =========================== 2. MOTIVATION ===========================
 \section{Why I Chose This Project}
 
-I chose this project for two main reasons. The first reason is personal: as a
-student, I understand the problem very well, so I knew exactly what a good
-system should do. The second reason is professional: I wanted a project that
-was large enough to practise everything I had learned in my software courses,
-from designing a database to building a user interface.
+There are two main reasons why I chose this project. The first reason is
+personal. As a student, I know the problem very well, so I knew exactly what a
+good system should do. The second reason is related to my studies. I wanted a
+project that was big enough to practise everything I had learned in my IT
+courses, from designing a database to building a website.
 
-Before writing any code, I set myself four clear goals:
+Before I started writing any code, I set myself four goals:
 \begin{enumerate}[leftmargin=1.6em]
-  \item to build a \textbf{complete} system with two separate areas, one for
-        students and one for administrators;
-  \item to make sure the system is \textbf{fair and reliable}, so that it never
-        accepts more students than a class can hold;
-  \item to make it \textbf{easy to use}, with clear messages when something
-        goes wrong;
-  \item to make it \textbf{easy to install}, so that anyone can run it with a
-        single command.
+  \item to build a \textbf{complete} system with two separate parts, one for
+        students and one for staff;
+  \item to make the system \textbf{fair}, so that a class never has more
+        students than seats;
+  \item to make it \textbf{easy to use}, with clear messages when there is a
+        problem;
+  \item to make it \textbf{easy to install}, so that anyone can start it with
+        only one command.
 \end{enumerate}
 
-% =========================== 3. WHAT IT DOES ===========================
 \section{What the System Does}
 
-The system has two ``portals'', or areas, and each user only sees the area that
-matches their role. Table~\ref{tab:features} summarises the main features of
-each one.
+The system has two ``portals'', or areas: one for students and one for
+administrators (the university staff). Each user can only see the area which
+matches their role. Table~\ref{tab:features} shows the main features of each
+area.
 
 \begin{table}[H]
 \centering
@@ -127,33 +126,32 @@ each one.
 \toprule
 \textbf{\color{primary}Student portal} & \textbf{\color{primary}Administrator portal} \\
 \midrule
-View personal information and study status &
-Create and update courses and their prerequisites \\
+See personal information and study status &
+Add and update courses \\
 Register for a class, or cancel it, with one click &
-Set up semesters and the registration period \\
-See a weekly timetable of all registered classes &
-Open classes and assign lecturers and rooms \\
-Look up scores, letter grades and GPA &
-Monitor how many students have registered \\
+Set the dates of each semester and the registration period \\
+See a weekly timetable of all their classes &
+Open new classes and choose lecturers and rooms \\
+Check their scores, grades and GPA &
+Check how many students have registered \\
 \bottomrule
 \end{tabularx}
 \caption{Main features of the two portals}
 \label{tab:features}
 \end{table}
 
-For example, when a student wants to take a class, they simply open the
-registration page, choose a class and click \emph{Register}. Behind the scenes,
-the system checks several rules before it accepts the request. If one rule is
-broken, for instance if the class is already full, the student sees a clear
-message explaining why. I also added a \emph{dark mode}, which is more
-comfortable for the eyes when working at night.
+For example, if a student wants to join a class, they just open the
+registration page, choose the class and click \emph{Register}. Before the
+system accepts the request, it checks several rules. If a rule is broken, for
+example because the class is already full, the student sees a clear message
+that explains the problem. I also added a \emph{dark mode}, because it is more
+comfortable for the eyes when students use the website at night.
 
-% =========================== 4. HOW I BUILT IT ===========================
 \section{How I Built It}
 
 \subsection{The three main parts}
-Like most modern web applications, my system is made of three parts that work
-together, as shown in Figure~\ref{fig:parts}.
+Like most websites today, my system has three parts which work together, as
+you can see in Figure~\ref{fig:parts}.
 
 \begin{figure}[H]
 \centering
@@ -172,120 +170,115 @@ together, as shown in Figure~\ref{fig:parts}.
 \label{fig:parts}
 \end{figure}
 
-The \textbf{front end} is the part that users see and click on in their web
-browser. I built it with React, a popular tool for creating interactive web
-pages. The \textbf{back end} runs on a server. It receives every request,
-checks who the user is, applies the registration rules and then sends back an
-answer. I wrote it in JavaScript using Node.js and Express. Finally, the
-\textbf{database} stores all the information, such as students, courses,
-classes, timetables and grades, in eight connected tables. I used MySQL for
-this part.
+The \textbf{front end} is the part that users see and click on in their
+browser. I built it with React, which is a popular tool for making websites.
+The \textbf{back end} runs on a server. It receives every request, checks who
+the user is, follows the registration rules and then sends back an answer. I
+wrote it in JavaScript with Node.js and Express. The last part is the
+\textbf{database}. It keeps all the information, such as students, courses,
+classes, timetables and grades, in eight tables which are connected to each
+other. For this part, I used MySQL.
 
-To keep the system secure, every user must log in, and passwords are never
-stored as plain text. In addition, I packaged all three parts with a tool
-called \emph{Docker}, so that the whole system can be started with a single
-command on any computer.
+To keep the system safe, every user has to log in, and passwords are never
+saved as normal text. In addition, I used a tool called \emph{Docker}, so the
+whole system can be started with only one command on any computer.
 
-\subsection{My working process}
-I organised the work into five stages:
+\subsection{How I organised my work}
+I divided the work into five stages:
 \begin{enumerate}[leftmargin=1.6em]
-  \item \textbf{Analysis (January).} I studied how registration works at my
-        university and wrote down nine rules that the system must follow, for
-        example ``a student cannot register for a full class''.
+  \item \textbf{Planning (January).} I looked at how registration works at my
+        university, and I wrote down nine rules that the system must follow,
+        for example ``a student cannot register for a full class''.
   \item \textbf{Database and back end (March).} I designed the database and
-        built the back end, which contains all the rules.
-  \item \textbf{Reorganisation.} As the project grew, I restructured the code
-        so that the front end and the back end live in one well-organised
-        project.
-  \item \textbf{Front end.} I built the student and administrator websites
-        and improved the design.
-  \item \textbf{Deployment and documentation.} I prepared the system for
-        installation with Docker and wrote installation and technical documentation.
+        built the back end, where all the rules are checked.
+  \item \textbf{Reorganising.} When the project became bigger, I changed the
+        structure of the code, so the front end and the back end are now kept
+        together in one tidy project.
+  \item \textbf{Front end.} I built the websites for students and staff, and
+        then I improved the design.
+  \item \textbf{Getting ready to share.} I set up Docker and wrote guides
+        that explain how to install and use the system.
 \end{enumerate}
-Throughout the project, I used Git, a version control tool, to save every step
-of my work. This meant that I could always go back if I made a mistake.
+During the whole project, I used Git, a tool which saves every version of the
+code. Thanks to Git, I could always go back if I made a mistake.
 
-% =========================== 5. CHALLENGES ===========================
 \section{The Biggest Challenges}
 
-Although many parts of the project were straightforward, two problems took
-much more time and thought than I had expected.
+Most parts of the project were quite easy for me. However, two problems took
+much more time than I had expected.
 
 \subsection{Challenge 1: the last seat}
 Imagine a class with 40 seats, and 39 students have already registered. Now,
-two students click \emph{Register} at exactly the same moment. In a simple
-system, both requests ask the database ``Is there a free seat?'', both receive
-the answer ``Yes, one seat'', and both students are accepted. As a result, the
-class ends up with 41 students, which is clearly unfair and causes problems
-for the lecturer.
+two students click \emph{Register} at exactly the same time. In a simple
+system, both requests ask the database ``Is there a free seat?''. The database
+answers ``Yes'' to both of them, so both students are accepted. As a result,
+the class has 41 students, which is unfair and causes problems for the
+lecturer.
 
-At first, I did not even notice this problem, because it never happened when I
-tested the system alone. However, after reading about how real registration
-systems work, I realised that it would definitely happen on a busy
-registration day. To solve it, I used a database feature called a
-\textbf{transaction with a lock}. In simple terms, when the first student starts
-registering for a class, the system ``locks'' that class for a fraction of a
-second. The second student has to wait until the first registration is
-complete. When it is their turn, the system correctly sees that the class is
-full and shows a polite message. In addition, I added a rule inside the
-database itself, so that the number of students can never be higher than the
-number of seats, even if there were a mistake in my code.
+At first, I did not notice this problem, because it never happened when I was
+testing the system alone. However, after I read about how real registration
+systems work, I understood that it would certainly happen on a busy day. To
+solve it, I used a database feature called a \textbf{lock}. In simple words,
+when the first student starts to register for a class, the system ``locks''
+that class for a very short moment. The second student has to wait until the
+first student has finished. When it is their turn, the system can see that the
+class is full, and it shows a polite message. I also added a rule inside the
+database itself. Because of this rule, the number of students can never be
+bigger than the number of seats, even if there is a mistake in my code.
 
 \subsection{Challenge 2: timetable clashes}
-The second challenge was to stop students from registering for two classes
-that take place at the same time. This sounds easy, but real timetables are
-more complicated than they look. Some classes, for instance, only meet in odd
-weeks, while others only meet in even weeks. I eventually defined a clear rule:
-two classes clash only if \emph{all three} of the following are true:
+The second problem was how to stop students from registering for two classes
+at the same time. It sounds simple, but real timetables are more complicated
+than they look. For example, some classes only meet in odd weeks, while others
+only meet in even weeks. In the end, I decided on a clear rule: two classes
+clash only if \emph{all three} of these things are true:
 \begin{itemize}[leftmargin=1.6em]
   \item they are on the same day of the week;
-  \item their lesson periods overlap;
-  \item their weeks are compatible (an odd-week class never clashes with an
-        even-week class).
+  \item their lesson times overlap, even by one period;
+  \item their weeks match (a class in odd weeks never clashes with a class in
+        even weeks).
 \end{itemize}
-Whenever a clash is found, the system does not simply say ``Error''. Instead,
-it tells the student exactly which of their classes is causing the problem, so
-they know what to change.
+When the system finds a clash, it does not only say ``Error''. Instead, it
+tells the student which of their classes is causing the problem, so they know
+what they need to change.
 
-% =========================== 6. WHAT I LEARNED ===========================
-\section{What I Learned}
+\section{What I Have Learned}
 
-This project taught me much more than any single course exercise. On the
-technical side, I became confident with all three parts of a web application,
-and I now understand why reliability problems like ``the last seat'' matter so
-much in real systems. More importantly, however, I developed several skills
-that I believe will be useful in any job.
+I have learned much more from this project than from any normal homework
+exercise. On the technical side, I now feel confident with all three parts of
+a website, and I understand why problems like ``the last seat'' are so
+important in real systems. However, I think the most useful things I have
+learned are skills that I can use in any job.
 
 \begin{itemize}[leftmargin=1.6em]
-  \item \textbf{Planning before acting.} Writing down the nine rules before
-        coding saved me a great deal of time, because I always knew exactly
-        what I was building.
-  \item \textbf{Learning independently.} Many solutions, such as the
-        transaction lock, were not taught in my classes. I had to find
-        information in documentation and articles, most of which were written
-        in English.
-  \item \textbf{Writing clearly.} I wrote documentation so that other people
-        could install and use the system. This taught me to explain technical
-        ideas in simple, well-organised language, which is also the aim of
-        this report.
-  \item \textbf{Managing my time.} Breaking the work into stages helped me to
-        make steady progress and to stay motivated.
+  \item \textbf{Planning before doing.} Because I wrote down the nine rules
+        before coding, I saved a lot of time. I always knew what I had to
+        build next.
+  \item \textbf{Learning by myself.} Some solutions, such as the lock, were not
+        taught in my classes. I had to find the answers in guides and articles,
+        and most of them were written in English.
+  \item \textbf{Writing clearly.} I wrote guides so that other people could
+        install and use the system. This taught me how to explain technical
+        ideas in simple and clear language, which is also the goal of this
+        report.
+  \item \textbf{Managing my time.} Dividing the work into small stages helped
+        me to make progress every week and to stay motivated.
 \end{itemize}
 
-If I had more time, I would like to add automatic tests, a waiting list for
-full classes with email notifications, and an automatic check that students
-have completed the required prerequisite courses.
+If I had more time, I would add automatic tests, a waiting list for full
+classes with email messages, and a check to make sure that students have
+passed the courses which they need before joining a new one.
 
-% =========================== 7. CONCLUSION ===========================
 \section{Conclusion}
 
-In conclusion, the Course Management and Registration System is the project I
-am most proud of so far. It started from a problem that I experienced myself
-as a student, and it became a complete system that is fair, easy to use and
-easy to install. Along the way, I faced real challenges, such as protecting the
-last seat in a class and detecting timetable clashes, and solving them taught
-me to plan carefully, learn independently and communicate clearly. Above all,
-this project showed me that good software is not only about writing code, but
-about understanding people's problems and solving them in a reliable way.
+In conclusion, the Course Management and Registration System is the project
+that I am most proud of so far. It started from a problem that I had as a
+student, and it became a complete system that is fair, easy to use and easy to
+install. During the project, I faced some difficult problems, such as
+protecting the last seat in a class and finding timetable clashes. Solving
+them taught me to plan carefully, to learn by myself and to explain my ideas
+clearly. Most importantly, this project has shown me that good software is not
+only about writing code. It is also about understanding people's problems and
+finding good solutions for them.
 
 \end{document}

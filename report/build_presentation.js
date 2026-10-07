@@ -100,7 +100,7 @@ async function icon(Comp, color, size = 256) {
   s.addText("Course Management & Registration System", { placeholder: "title" });
   s.addText("A web application that makes course registration fair, reliable and simple", { placeholder: "body" });
   T(s, "Your Name  ·  Student ID  ·  English Writing & Presentation Skills", { x: 0.7, y: 4.65, w: 8.7, h: 0.4, fontSize: 14, color: C.background1 });
-  s.addNotes("Good morning, everyone. My name is [your name]. Today, I would like to tell you about a project that I have worked on: a course registration system for university students. I will explain why I built it, what it does, the biggest challenges I faced, and what I learned along the way.");
+  s.addNotes("Good morning, everyone. My name is [your name]. Today, I would like to tell you about a project that I have worked on. It is a website that helps university students register for their classes. I will explain why I built it, what it does, the biggest problems I had, and what I have learned.");
 
   // ================= 2. Agenda =================
   pres.addSection({ title: "Context" });
@@ -119,7 +119,7 @@ async function icon(Comp, color, size = 256) {
     T(s, head, { x: x + 0.25, y: y + 1.2, w: 1.7, h: 0.5, fontSize: 18, bold: true, color: C.text2 });
     T(s, sub, { x: x + 0.25, y: y + 1.8, w: 1.7, h: 1.1, fontSize: 14, color: C.text1 });
   });
-  s.addNotes("My presentation is divided into four parts. First, I will talk about why I chose this project. Second, I will show you what the system does and how it works. Third, I will focus on the two hardest problems I had to solve. And finally, I will share what I learned. The presentation will take about eight minutes, and I will be happy to answer your questions at the end.");
+  s.addNotes("My presentation has four parts. First, I will talk about why I chose this project. Second, I will show you what the system does and how it works. Third, I will talk about the two most difficult problems that I had to solve. And finally, I will tell you what I have learned. My talk will take about eight minutes, and after that I will be happy to answer your questions.");
 
   // ================= 3. Problem =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Context" });
@@ -128,7 +128,7 @@ async function icon(Comp, color, size = 256) {
     [fa.FaUsers, "Limited seats", "Hundreds of students compete for the last seats in the same minute"],
     [fa.FaCalendarTimes, "Timetable clashes", "Two classes at the same time are easy to miss"],
     [fa.FaClock, "Strict time windows", "Registration and cancellation are only open for a few days"],
-    [fa.FaClipboardList, "Manual admin work", "Courses, rooms and sections are often managed in spreadsheets"],
+    [fa.FaClipboardList, "Manual admin work", "Staff often manage courses, rooms and classes in Excel"],
   ];
   for (let i = 0; i < probs.length; i++) {
     const [ic, head, sub] = probs[i];
@@ -139,7 +139,7 @@ async function icon(Comp, color, size = 256) {
     T(s, head, { x: x + 1.35, y: y + 0.3, w: 2.85, h: 0.4, fontSize: 18, bold: true, color: C.text2 });
     T(s, sub, { x: x + 1.35, y: y + 0.75, w: 2.85, h: 0.75, fontSize: 14, color: C.text1 });
   }
-  s.addNotes("Let me start with the problem. I am sure many of you remember registration day. Everyone clicks at the same time, so seats disappear in minutes. It is easy to choose two classes that are at the same time. The registration period is very short. And on the other side, the academic office often manages everything in spreadsheets. I experienced this stress myself, and that is exactly why I chose this project.");
+  s.addNotes("Let me start with the problem. I am sure that many of you remember registration day. Everyone clicks at the same time, so the seats are gone in a few minutes. It is also easy to choose two classes at the same time by mistake. The registration period is very short, too. And for the university staff, a lot of the work is still done in Excel. I have had this stressful experience myself, and that is why I chose this project.");
 
   // ================= 4. Goals + numbers =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Context" });
@@ -156,7 +156,7 @@ async function icon(Comp, color, size = 256) {
     { text: "My goal: ", options: { bold: true, color: C.text2 } },
     { text: "a system that is fair, reliable and easy to use, even when hundreds of students click “Register” at the same moment.", options: { color: C.text1 } },
   ], { x: 0.8, y: 3.75, w: 8.4, h: 0.95, fontSize: 16, valign: "middle" });
-  s.addNotes("Here is the project at a glance. The system has two portals: one for students and one for administrators. It checks nine rules every time a student signs up for a class. I built it in about three months, from January to March 2026, and I designed and developed it by myself. My main goal was simple: the system must be fair, reliable and easy to use, even on the busiest day.");
+  s.addNotes("Here is a quick look at the project. The system has two portals: one for students and one for staff. It checks nine rules every time a student registers for a class. I built it in about three months, from January to March this year, and I did all the work by myself. My main goal was simple: the system must be fair, it must work well, and it must be easy to use, even on the busiest day.");
 
   // ================= 5. Student portal =================
   pres.addSection({ title: "Solution" });
@@ -166,7 +166,7 @@ async function icon(Comp, color, size = 256) {
   shot(s, "student-timetable.jpg", 6.6, 1.25, 2.9, "Weekly timetable");
   shot(s, "student-grades.jpg", 6.6, 1.25 + 2.9 / RATIO + 0.25, 2.9, "Grades and GPA");
   T(s, "Real screenshots of the running system", { x: 0.5, y: 4.8, w: 5.75, h: 0.3, fontSize: 12, italic: true, color: C.accent4 });
-  s.addNotes("Now, let's move on to what the system actually does. Rather than just describing it, I would like to show you some real screenshots. This is the student portal. On the left is the registration page: students can see every class, its timetable and how many seats are left, and they can register or cancel with just one click. On the right, you can see the weekly timetable, which is built automatically, and the grades page with the student's GPA.");
+  s.addNotes("Now, let's move on to what the system can do. Instead of just describing it, I would like to show you some real screenshots. This is the student portal. On the left, you can see the registration page. Students can see every class, its timetable and how many seats are left, and they can register or cancel with just one click. On the right, there is the weekly timetable, which is made automatically, and the page where students can check their grades and GPA.");
 
   // ================= 5b. Admin portal =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
@@ -175,7 +175,7 @@ async function icon(Comp, color, size = 256) {
   shot(s, "admin-semesters.jpg", 6.6, 1.25, 2.9, "Registration periods");
   shot(s, "admin-schedule.jpg", 6.6, 1.25 + 2.9 / RATIO + 0.25, 2.9, "Room schedule");
   T(s, "Real screenshots of the running system", { x: 0.5, y: 4.8, w: 5.75, h: 0.3, fontSize: 12, italic: true, color: C.accent4 });
-  s.addNotes("And this is the administrator portal. Here, the academic office can open new classes and assign lecturers and rooms. They can also set the registration period for each semester and see the schedule of every room in one view. Each user only sees the portal that matches their role.");
+  s.addNotes("And this is the portal for the staff. Here, they can open new classes and choose the lecturer and the room for each class. They can also set the registration period for each semester, and they can see the timetable of every room on one page. Each user can only see the portal which matches their role.");
 
   // ================= 6. How it works =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Solution" });
@@ -198,7 +198,7 @@ async function icon(Comp, color, size = 256) {
   card(s, 0.5, 4.3, 9.0, 0.6, C.accent5);
   await iconCircle(s, fa.FaDocker, 0.65, 4.37, 0.46, HEX.teal, HEX.white);
   T(s, "Packaged with Docker: the whole system starts with one command", { x: 1.3, y: 4.3, w: 8.0, h: 0.6, fontSize: 15, color: C.text2, valign: "middle" });
-  s.addNotes("So, how does it work? Like most web applications, it has three parts. The front end is what users see in their browser; I built it with React. The back end is the 'brain': it checks who the user is and applies all the rules. And the database stores all the information. Finally, I packaged everything with a tool called Docker, so the whole system can be started with a single command.");
+  s.addNotes("So, how does it work? Like most websites, it has three parts. The front end is what users see in their browser. I built it with React. The back end is like the brain of the system. It checks who the user is and follows all the rules. And the database keeps all the information. Finally, I used a tool called Docker, so the whole system can be started with just one command.");
 
   pres.addSection({ title: "Hard part" });
   // ================= 10. Race condition =================
@@ -218,16 +218,16 @@ async function icon(Comp, color, size = 256) {
   card(s, 5.1, 1.3, 4.4, 3.6, C.accent5);
   T(s, "My solution", { x: 5.35, y: 1.45, w: 3.9, h: 0.4, fontSize: 18, bold: true, color: C.text2 });
   const sol = [
-    ["All or nothing", "every check and the sign-up succeed together, or nothing changes"],
+    ["All or nothing", "all checks and the sign-up happen together, or nothing is saved"],
     ["A short lock", "the class is locked for a moment, so Student B waits for Student A"],
-    ["A safety rule", "the database itself refuses more students than seats"],
+    ["A safety rule", "the database never allows more students than seats"],
   ];
   sol.forEach(([h, d], i) => {
     const y = 2.0 + i * 0.95;
     T(s, [{ text: h, options: { bold: true, color: C.text2, breakLine: true } }, { text: d, options: { color: C.text1 } }],
       { x: 5.35, y, w: 3.95, h: 0.85, fontSize: 14 });
   });
-  s.addNotes("This brings me to the most interesting part: the challenges. The first one is what I call 'the last seat'. Imagine a class with forty seats and thirty-nine students. Two students click Register at exactly the same moment. Without protection, both see one free seat, both are accepted, and the class ends up with forty-one students. To solve this, I made the sign-up 'all or nothing', and I lock the class for a very short moment, so the second student has to wait. When it is their turn, the system correctly says the class is full. As a final safety net, the database itself refuses more students than seats.");
+  s.addNotes("This brings me to the most interesting part: the problems I had to solve. The first one is what I call 'the last seat'. Imagine a class with forty seats, and thirty-nine students have already registered. Then two students click Register at exactly the same time. Without any protection, both of them see one free seat, both of them are accepted, and the class ends up with forty-one students. To fix this, I made the system lock the class for a very short moment, so the second student has to wait. When it is their turn, the system can see that the class is full. As an extra safety rule, the database never allows more students than seats.");
 
   // ================= 11. Timetable conflict =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Hard part" });
@@ -249,18 +249,18 @@ async function icon(Comp, color, size = 256) {
   card(s, 0.5, 4.2, 9.0, 0.7, C.accent5);
   T(s, [{ text: "Result: ", options: { bold: true, color: C.text2 } }, { text: "a clear message that names the clashing class, so the student knows exactly what to change.", options: { color: C.text1 } }],
     { x: 0.75, y: 4.2, w: 8.5, h: 0.7, fontSize: 15, valign: "middle" });
-  s.addNotes("The second challenge was timetable clashes. It sounds easy, but some classes only meet in odd weeks, and others only in even weeks. So I defined a clear rule: two classes clash only if all three conditions on this slide are true: the same day, overlapping periods, and compatible weeks. And when there is a clash, the system does not just say 'Error'. It tells the student exactly which class is the problem.");
+  s.addNotes("The second problem was timetable clashes. It sounds easy, but some classes only meet in odd weeks, and others only meet in even weeks. So I decided on a clear rule: two classes clash only if all three things on this slide are true. They are on the same day, their lesson times overlap, and their weeks match. When there is a clash, the system does not just say 'Error'. It tells the student which class is causing the problem.");
 
   // ================= 12. Timeline =================
   pres.addSection({ title: "Journey" });
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Journey" });
   s.addText("How I built it", { placeholder: "title" });
   const tl = [
-    ["Jan 2026", "Analysis", "Studied the real process, wrote the 9 rules"],
+    ["Jan 2026", "Planning", "Looked at the real process, wrote 9 rules"],
     ["Mar 2026", "Back end", "Database and all the registration rules"],
-    ["Mar 2026", "Reorganise", "One clean project for all the code"],
+    ["Mar 2026", "Reorganising", "One clean project for all the code"],
     ["Mar 2026", "Front end", "Student and admin websites, dark mode"],
-    ["Mar 2026", "Release", "Docker setup and documentation"],
+    ["Mar 2026", "Sharing", "Docker setup and guides"],
   ];
   s.addShape(pres.shapes.LINE, { x: 1.3, y: 2.15, w: 7.4, h: 0, line: { color: HEX.line, width: 3 }, objectName: name("timeline") });
   tl.forEach(([date, h, d], i) => {
@@ -272,16 +272,16 @@ async function icon(Comp, color, size = 256) {
   });
   card(s, 0.5, 4.3, 9.0, 0.6, C.accent5);
   T(s, "Every step saved with Git, so I could always go back after a mistake", { x: 0.75, y: 4.3, w: 8.5, h: 0.6, fontSize: 14, color: C.text2, valign: "middle" });
-  s.addNotes("Now, let me briefly describe how I built the project. I worked in five stages. In January, I analysed the real process and wrote down nine rules. In March, I built the database and the back end, then reorganised the code, built the two websites, and finally prepared the release with Docker and documentation. I used Git the whole time, so I could always go back if I made a mistake.");
+  s.addNotes("Now, let me quickly explain how I built the project. I divided the work into five stages. In January, I looked at how registration works at my university, and I wrote down nine rules. In March, I built the database and the back end. Then I reorganised the code, built the two websites, and finally I set up Docker and wrote the guides. I used Git during the whole project, so I could always go back if I made a mistake.");
 
   // ================= 13. Lessons =================
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Journey" });
   s.addText("What I learned", { placeholder: "title" });
   const lessons = [
-    [fa.FaPencilRuler, "Plan before acting", "Writing the nine rules first saved me a lot of time"],
-    [fa.FaBookOpen, "Learn independently", "I found many answers in English documentation"],
-    [fa.FaPenNib, "Write clearly", "Documentation taught me to explain ideas simply"],
-    [fa.FaHourglassHalf, "Manage my time", "Small stages kept me motivated and on track"],
+    [fa.FaPencilRuler, "Plan before doing", "Writing the nine rules first saved me a lot of time"],
+    [fa.FaBookOpen, "Learn by myself", "I found many answers in English guides"],
+    [fa.FaPenNib, "Write clearly", "Writing guides taught me to explain ideas simply"],
+    [fa.FaHourglassHalf, "Manage my time", "Small stages kept me motivated every week"],
   ];
   for (let i = 0; i < lessons.length; i++) {
     const [ic, h, d] = lessons[i];
@@ -292,10 +292,10 @@ async function icon(Comp, color, size = 256) {
   }
   card(s, 6.2, 1.25, 3.3, 3.65, C.accent5);
   T(s, "Next steps", { x: 6.45, y: 1.4, w: 2.8, h: 0.4, fontSize: 18, bold: true, color: C.text2 });
-  const next = ["Automatic tests", "Waiting list with email alerts", "Automatic prerequisite check"];
+  const next = ["Automatic tests", "Waiting list with email alerts", "Check for required courses"];
   T(s, next.map((t, k) => ({ text: t, options: { bullet: true, breakLine: k < next.length - 1 } })),
     { x: 6.45, y: 1.95, w: 2.85, h: 2.8, fontSize: 15, color: C.text1, paraSpaceAfter: 10 });
-  s.addNotes("Finally, what did I learn? Of course, I improved my technical skills. But more importantly, I learned four skills that are useful in any job. First, plan before acting: writing the rules first saved me a lot of time. Second, learn independently: many answers were only in English documentation. Third, write clearly: writing documentation taught me to explain ideas simply. And fourth, manage my time by working in small stages. In the future, I would like to add automatic tests, a waiting list, and a prerequisite check.");
+  s.addNotes("Finally, what have I learned? Of course, my technical skills have improved a lot. But I think the most useful things are four skills that I can use in any job. First, plan before doing: writing the rules first saved me a lot of time. Second, learn by myself: I found many answers in English guides. Third, write clearly: writing guides taught me to explain ideas in a simple way. And fourth, manage my time by working in small stages. In the future, I would like to add automatic tests, a waiting list and a check for required courses.");
 
   // ================= 14. Thank you =================
   pres.addSection({ title: "Closing" });
@@ -304,7 +304,7 @@ async function icon(Comp, color, size = 256) {
   s.addText("Questions and feedback are very welcome", { placeholder: "body" });
   await iconCircle(s, fa.FaComments, 8.35, 0.55, 1.0, HEX.teal, HEX.orange);
   T(s, "Your Name  ·  English Writing & Presentation Skills", { x: 0.7, y: 4.65, w: 8.7, h: 0.4, fontSize: 14, color: C.background1 });
-  s.addNotes("To sum up, this project started from a problem I experienced myself and became a complete, working system. It taught me that good software is not only about code, but about understanding people's problems. Thank you very much for listening. I would be happy to answer any questions you may have.");
+  s.addNotes("To sum up, this project started from a problem that I had as a student, and it became a complete system that really works. It has taught me that good software is not only about code. It is also about understanding people's problems. Thank you very much for listening. I would be happy to answer any questions you have.");
 
   await pres.writeFile({ fileName: OUT });
   await applyTheme(OUT, THEME);
